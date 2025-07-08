@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Productos</title>
+    <link rel="stylesheet" href="styles otro.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <header>
+        <nav class="navbar">
+            <div class="logo"><img src="logo.png" alt="logo img"></div>
+            <ul class="nav-links">
+                <li class="nav-item"><a href="index.html">Home</a>
+                    <ul class="submenu">
+                        <li><a href="mica.html">Mica</a></li>
+                        <li><a href="Cargador.html">Cargador</a></li>
+                        <li><a href="cover.html">Cover</a></li>
+                        <li><a href="telefono.html">Telefono</a></li>
+                        <li><a href="bateria.html">Batería</a></li>
+                        <li><a href="audifono.html">Audífono</a></li>
+                    </ul>
+                </li>
+            </li>
+            <li class="nav-item"><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <!-- Contenido principal con imagen de fondo -->
+    <div class="cover-image">
+        <div class="content">
+            <h2>Modelos</h2>
+            <div class="product-gallery">
+                <!-- Recuadros de productos con transiciones de imagen y tarifas -->
+                <!-- Producto 1 -->
+                <div class="product-card">
+                    <div class="slider">
+                        <img src="p1.jpg" alt="Producto 1 - Imagen 1">
+                        <img src="p2.jpeg" alt="Producto 1 - Imagen 2">
+                        <img src="p3.jpg" alt="Producto 1 - Imagen 3">
+                    </div>
+                    <div class="product-name">Popsocket</div>
+                    <button onclick="toggleTariff('tariff1')">Ver tarifas</button>
+                    <ul id="tariff1" class="tariff-list">
+                        <li>1 unidad: 300 CUP</li>
+                        <li>A partir de 100 unidades: 250</li>
+                    </ul>
+                    <input type="number" id="cantidad1" placeholder="Cantidad">
+                    <button onclick="addToTable('Popsocket', 'cantidad1', 220, 180)">Agregar</button>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <div class="slider">
+                        <img src="colgante 1.jpg" alt="Producto 2 - Imagen 1">
+                        <img src="colgante 2.jpg" alt="Producto 2 - Imagen 2">
+                        <img src="colgante 3.jpg" alt="Producto 2 - Imagen 3">
+                    </div>
+                    <div class="product-name">Colgantes Artesanales</div>
+                    <button onclick="toggleTariff('tariff2')">Ver tarifas</button>
+                    <ul id="tariff2" class="tariff-list">
+                        <li>1 unidad:300 CUP</li>
+                        <li>A partir de 200 unidades: 275 CUP</li>
+                    </ul>
+                    <input type="number" id="cantidad2" placeholder="Cantidad">
+                    <button onclick="addToTable('Colgantes Artesanales', 'cantidad2', 300, 275)">Agregar</button>
+                </div>
+
+                
+
+              
+            <!-- Tabla de productos agregados -->
+            <div class="product-table">
+                <table id="product-table">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Productos agregados se mostrarán aquí -->
+                    </tbody>
+                </table>
+                <button onclick="calculateTotal()">Calcular</button>
+                <div id="total-price"></div>
+                <button id="solicitar-btn" onclick="sendWhatsApp()" disabled>Solicitar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="otros-scrypt.js"></script>
+</body>
+</html>
