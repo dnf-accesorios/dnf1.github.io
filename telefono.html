@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Productos</title>
+    <link rel="stylesheet" href="styles telefono.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <header>
+        <nav class="navbar">
+            <div class="logo"><img src="logo.png" alt="logo img"></div>
+            <ul class="nav-links">
+                <li class="nav-item"><a href="index.html">Home</a>
+                    <ul class="submenu">
+                        <li><a href="mica.html">Mica</a></li>                       
+                        <li><a href="cover.html">Cover</a></li>
+                        <li><a href="Cargador.html">Cargadores</a></li>
+                        <li><a href="bateria.html">Batería</a></li>
+                        <li><a href="audifono.html">Audífono</a></li>
+                        <li><a href="otros.html">Otros...</a></li>
+                    </ul>
+                </li>
+            </li>
+            <li class="nav-item"><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <!-- Contenido principal con imagen de fondo -->
+    <div class="cover-image">
+        <div class="content">
+            <h2>Modelos</h2>
+            <div class="product-gallery">
+                <!-- Recuadros de productos con transiciones de imagen y tarifas -->
+                <!-- Producto 1 -->
+                <div class="product-card">
+                    <div class="slider">
+                        <img src="telefono sansung galaxy f05-1.jpg" alt="Producto 1 - Imagen 1">
+                        <img src="telefono sansung galaxy f05-2.jpg" alt="Producto 1 - Imagen 2">
+                        <img src="telefono sansung galaxy f05-3.jpg" alt="Producto 1 - Imagen 3">
+                    </div>
+                    <div class="product-name">Sansung Galaxy F05 ( pantalla HD+ de 6.7 pulgadas 
+                        y potenciado por un procesador 
+                        Helio G85 acompañado de 4GB de RAM y 64GB de almacenamient)</div>
+                    <button onclick="toggleTariff('tariff1')">Ver tarifas</button>
+                    <ul id="tariff1" class="tariff-list">
+                        <li>1 unidad: 160 USD</li>
+                        <li>A partir de 5 unidades: 105 USD</li>
+                    </ul>
+                    <input type="number" id="cantidad1" placeholder="Cantidad">
+                    <button onclick="addToTable('Sansung Galaxy F05', 'cantidad1', 160, 105)">Agregar</button>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <div class="slider">
+                        <img src="telefonosgam14-1.webp" alt="Producto 2 - Imagen 1">
+                        <img src="telefonosgam14-2.webp" alt="Producto 2 - Imagen 2">
+                        <img src="telefonosgam14-3.jpg" alt="Producto 2 - Imagen 3">
+                    </div>
+                    <div class="product-name">Sansung Galaxy M14 (Memoria RAM: 4 GB.
+                        Memoria del Teléfono: 64 GB.
+                        Procesador: Exynos 1330 )</div>
+                    <button onclick="toggleTariff('tariff2')">Ver tarifas</button>
+                    <ul id="tariff2" class="tariff-list">
+                        <li>1 unidad: 170 USD</li>
+                        <li>A partir de 5 unidades: 120 USD</li>
+                    </ul>
+                    <input type="number" id="cantidad2" placeholder="Cantidad">
+                    <button onclick="addToTable('Sansung Galaxy M14', 'cantidad2', 170, 120)">Agregar</button>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="product-card">
+                    <div class="slider">
+                        <img src="tsga16-1.avif" alt="Producto 3 - Imagen 1">
+                        <img src="tsga16-2.webp" alt="Producto 3 - Imagen 2">
+                        <img src="tsga16-3.png" alt="Producto 3 - Imagen 3">
+                    </div>
+                    <div class="product-name">Sansung Galaxy A16(Pantalla: 6.5 1080 x 2340 pixels.
+                        Procesador: Mediatek Helio G99 2.2GHz.
+                         Memoria RAM: 4GB.
+                        Almacenamiento: 64GB)</div>
+                    <button onclick="toggleTariff('tariff3')">Ver tarifas</button>
+                    <ul id="tariff3" class="tariff-list">
+                        <li>1 unidad: 180 USD</li>
+                        <li>A partir de 5 unidades: 155 USD</li>
+                    </ul>
+                    <input type="number" id="cantidad3" placeholder="Cantidad">
+                    <button onclick="addToTable('Sansung Galaxy A16', 'cantidad3', 180, 155)">Agregar</button>
+                </div>
+
+                
+
+                <!-- Producto 4 -->
+                <div class="product-card">
+                    <div class="slider">
+                        <img src="xiaomi-redmi-a3-lte-64gb-3gb-ram-dual-sim-black.jpg" alt="Producto 4 - Imagen 1">
+                        <img src="celular-xiaomi-redmi-a3-64gb-v01.jpg" alt="Producto 4 - Imagen 2">
+                        <img src="red a3 1.webp" alt="Producto 4 - Imagen 3">
+                    </div>
+                    <div class="product-name">Xiaomi Redmi A3 (Pantalla: 6.01 720 x 1560 pixels. 
+                        Procesador: Snapdragon 665 2GHz.
+                         Memoria RAM: 4GB.
+                          Almacenamiento: 64GB/128GB)</div>
+                    <button onclick="toggleTariff('tariff4')">Ver tarifas</button>
+                    <ul id="tariff4" class="tariff-list">
+                        <li>1 unidad: 110 USD</li>
+                        <li>A partir de 5 unidades: 84 USD</li>
+                    </ul>
+                    <input type="number" id="cantidad4" placeholder="Cantidad">
+                    <button onclick="addToTable('Xiaomi Redmi A3', 'cantidad4', 110, 84)">Agregar</button>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="product-card">
+                    <div class="slider">
+                        <img src="tecnogo1-1.avif" alt="Producto 5 - Imagen 1">
+                        <img src="tecnogo1-2.webp" alt="Producto 5 - Imagen 2">
+                        <img src="tecnogo1-3.png" alt="Producto 5 - Imagen 3">
+                    </div>
+                    <div class="product-name">Tecno Spark Pop Go 1
+                        RAM: 3GB.
+                        Almacenamiento: 64GB.
+                       </div>
+                    <button onclick="toggleTariff('tariff5')">Ver tarifas</button>
+                    <ul id="tariff5" class="tariff-list">
+                        <li>1 unidad: 115 USD</li>
+                        <li>A partir de 5 unidades: 90 USD</li>
+                    </ul>
+                    <input type="number" id="cantidad5" placeholder="Cantidad">
+                    <button onclick="addToTable('Tecno Spark Go 1', 'cantidad5', 115, 90)">Agregar</button>
+                </div>
+            </div>
+
+            <!-- Tabla de productos agregados -->
+            <div class="product-table">
+                <table id="product-table">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Productos agregados se mostrarán aquí -->
+                    </tbody>
+                </table>
+                <button onclick="calculateTotal()">Calcular</button>
+                <div id="total-price"></div>
+                <button id="solicitar-btn" onclick="sendWhatsApp()" disabled>Solicitar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="telefono-scrypt.js"></script>
+</body>
+</html>

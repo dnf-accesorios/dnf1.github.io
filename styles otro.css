@@ -1,0 +1,114 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.navbar {
+    background-color: #518ab1;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    position: relative;
+    padding: 10px;
+}
+
+.nav-item a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Submenú */
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+}
+
+.nav-item:hover .submenu {
+    display: block;
+}
+
+.logo img {
+    height: 100%;
+    width: 4%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    
+}
+.cover-image {
+    background-image: url('fondo\ colgante.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 0%;
+    padding-top: 60px;
+    flex-grow: 1;
+}
+
+.content {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-gallery {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    background-color: #689dad;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+    position: relative;
+}
+
+.slider img {
+    display: none;
+    width: 100%;
+    height: auto;
+}
+
+.slider img:first-child {
+    display: block;
+}
+
+.tariff-list {
+    display: none;
+    background-color: #c7c1c1;
+    padding: 10px;
+    margin-top: 10px;
+    color: #fff;
+}
+
+.product-table {
+    margin-top: 20px;
+    color: #fff;
+}
