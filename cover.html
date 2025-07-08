@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Productos</title>
+    <link rel="stylesheet" href="styles cover.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo"><img src="logo.png" alt="logo img"></div>
+            <ul class="nav-links">
+                <li class="nav-item"><a href="index.html">Home</a>
+                    <ul class="submenu">
+                        <li><a href="mica.html">Mica</a></li>                                                
+                        <li><a href="telefono.html">Teléfono</a></li>
+                        <li><a href="Cargador.html">Cargadores</a></li>
+                        <li><a href="bateria.html">Batería</a></li>
+                        <li><a href="audifono.html">Audífono</a></li>
+                        <li><a href="otros.html">Otros...</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Tarifa de precios</a>
+                    <ul class="submenu">
+                        <li>25 unidades - 850 CUP</li>
+                        <li>50 a 80 unidades - 800 CUP</li>
+                        <li>100 a 150 unidades - 780 CUP</li>
+                        <li>200 a 500 unidades - 770 CUP</li>
+                        <li>800 a 2000 unidades - 760 CUP</li>
+                        <li>3000 unidades - 750 CUP</li>
+                        <li>5000 unidades - 725 CUP</li>
+                        <li>10000 unidades - 700 CUP</li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="cover-image">
+        <div class="content">
+            <h2>Modelos</h2>
+        </div>
+    </div>
+
+    <div class="product-gallery">
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="tecnospark2024-1.png" alt="Tecno Spark Go 2024" class="slider-img">
+                <img src="tecnospark2024-2.png" alt="Tecno Spark Go 2024" class="slider-img">
+                <img src="tecnospark2024-3.png" alt="Tecno Spark Go 2024" class="slider-img">
+            </div>
+            <p class="product-name">Tecno Spark Go 2024</p>
+            <input type="number" id="cantidadProducto1" min="1" placeholder="Cantidad">
+            <button onclick="addProduct('Tecno Spark Go 2024', 'cantidadProducto1')">Agregar</button>
+        </div>
+
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="tecnospark2025-1.png" alt="Tecno Spark Go 2024" class="slider-img">
+                <img src="tecnospark2025-2.png" alt="Tecno Spark Go 2024" class="slider-img">
+                <img src="tecnospark2025-3.png" alt="Tecno Spark Go 2024" class="slider-img">
+            </div>
+            <p class="product-name">Tecno Spark Go 2025</p>
+            <input type="number" id="cantidadProducto71" min="71" placeholder="Cantidad">
+            <button onclick="addProduct('Tecno Spark Go 2025', 'cantidadProducto71')">Agregar</button>
+        </div>
+
+   <div class="product-card">
+            <div class="image-slider">
+                <img src="huaweip30lite-1.png" alt="Tecno Spark Go 2024" class="slider-img">
+                <img src="huaweip30lite-2.png" alt="Tecno Spark Go 2024" class="slider-img">
+                <img src="huaweip30lite-3.png" alt="Tecno Spark Go 2024" class="slider-img">
+            </div>
+            <p class="product-name">Huawi P30 Lite</p>
+            <input type="number" id="cantidadProducto72" min="72" placeholder="Cantidad">
+            <button onclick="addProduct('Huawi P30 Lite', 'cantidadProducto72')">Agregar</button>
+        </div>
+
+
+
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="redmi9c-1.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="redmi9c-2.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="redmi9c-3.png" alt="Xiaomi Remi 9C/A10" class="slider-img">
+            </div>
+            <p class="product-name">Xiaomi Remi 9C/A10</p>
+            <input type="number" id="cantidadProducto2" min="2" placeholder="Cantidad">
+            <button onclick="addProduct('Xiaomi Remi 9C/A10', 'cantidadProducto2')">Agregar</button>
+        </div>
+
+  <div class="product-card">
+            <div class="image-slider">
+                <img src="redmi12c-1.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="redmi12c-2.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="redmi12c-3.png" alt="Xiaomi Remi 9C/A10" class="slider-img">
+            </div>
+            <p class="product-name">Xiaomi Remi 12C</p>
+            <input type="number" id="cantidadProducto64" min="64" placeholder="Cantidad">
+            <button onclick="addProduct('Xiaomi Remi 12C', 'cantidadProducto64')">Agregar</button>
+        </div>
+
+  <div class="product-card">
+            <div class="image-slider">
+                <img src="redmi13c-1.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="redmi13c-2.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="redmi13c-3.png" alt="Xiaomi Remi 9C/A10" class="slider-img">
+            </div>
+            <p class="product-name">Xiaomi Remi 13C</p>
+            <input type="number" id="cantidadProducto65" min="65" placeholder="Cantidad">
+            <button onclick="addProduct('Xiaomi Remi 13C', 'cantidadProducto65')">Agregar</button>
+        </div>
+
+<div class="product-card">
+            <div class="image-slider">
+                <img src="redmi14c-1.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="redmi14c-2.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="redmi14c-3.png" alt="Xiaomi Remi 9C/A10" class="slider-img">
+            </div>
+            <p class="product-name">Xiaomi Remi 14C</p>
+            <input type="number" id="cantidadProducto66" min="66" placeholder="Cantidad">
+            <button onclick="addProduct('Xiaomi Remi 14C', 'cantidadProducto66')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="redmi12-1.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="redmi12-2.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="redmi12-3.png" alt="Xiaomi Remi 9C/A10" class="slider-img">
+            </div>
+            <p class="product-name">Xiaomi Remi 12</p>
+            <input type="number" id="cantidadProducto67" min="67" placeholder="Cantidad">
+            <button onclick="addProduct('Xiaomi Remi 12', 'cantidadProducto67')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="redmi13-1.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="redmi13-2.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="redmi13-.png" alt="Xiaomi Remi 9C/A10" class="slider-img">
+            </div>
+            <p class="product-name">Xiaomi Remi 13</p>
+            <input type="number" id="cantidadProducto68" min="68" placeholder="Cantidad">
+            <button onclick="addProduct('Xiaomi Remi 13', 'cantidadProducto68')">Agregar</button>
+        </div>
+ 
+  <div class="product-card">
+            <div class="image-slider">
+                <img src="iphone13promax.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="iphone13promax-2.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="iphone13promax-3.png" alt="Xiaomi Remi 9C/A10" class="slider-img">
+            </div>
+            <p class="product-name">Iphone 13 Pro+</p>
+            <input type="number" id="cantidadProducto68" min="68" placeholder="Cantidad">
+            <button onclick="addProduct('Iphone 13 Pro+', 'cantidadProducto68')">Agregar</button>
+        </div>
+
+         <div class="product-card">
+            <div class="image-slider">
+                <img src="iphone15-1.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="iphone15-2.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="iphone15-3.png" alt="Xiaomi Remi 9C/A10" class="slider-img">
+            </div>
+            <p class="product-name">Iphone 15</p>
+            <input type="number" id="cantidadProducto69" min="69" placeholder="Cantidad">
+            <button onclick="addProduct('Iphone 15', 'cantidadProducto69')">Agregar</button>
+        </div>
+
+ <div class="product-card">
+            <div class="image-slider">
+                <img src="iphone15pro-1.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="iphone15pro-2.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="iphone15pro-3.png" alt="Xiaomi Remi 9C/A10" class="slider-img">
+            </div>
+            <p class="product-name">Iphone 15 +</p>
+            <input type="number" id="cantidadProducto70" min="70" placeholder="Cantidad">
+            <button onclick="addProduct('Iphone 15 +', 'cantidadProducto70')">Agregar</button>
+        </div>
+
+ <div class="product-card">
+            <div class="image-slider">
+                <img src="iphone15+-1.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="iphone15+-2.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="iphone15+-3.png" alt="Xiaomi Remi 9C/A10" class="slider-img">
+            </div>
+            <p class="product-name">Iphone 15 Pro</p>
+            <input type="number" id="cantidadProducto71" min="71" placeholder="Cantidad">
+            <button onclick="addProduct('Iphone 15 Pro', 'cantidadProducto71')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="iphone11-1.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="iphone11-2.png" alt="Xiaomi Remi 9C/10" class="slider-img">
+                <img src="iphone11-3.png" alt="Xiaomi Remi 9C/A10" class="slider-img">
+            </div>
+            <p class="product-name">Iphone 11</p>
+            <input type="number" id="cantidadProducto72" min="72" placeholder="Cantidad">
+            <button onclick="addProduct('Iphone 11', 'cantidadProducto72')">Agregar</button>
+        </div>
+
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="redmia3-1.png" alt="Xiaomi Remi A3" class="slider-img">
+                <img src="redmia3-2.png" alt="Xiaomi Remi A3" class="slider-img">
+                <img src="redmia3-3.png" alt="Xiaomi Remi A3" class="slider-img">
+            </div>
+            <p class="product-name">Xiaomi Remi A3</p>
+            <input type="number" id="cantidadProducto3" min="3" placeholder="Cantidad">
+            <button onclick="addProduct('Xiaomi Remi A3', 'cantidadProducto3')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Sansung Galaxy A15" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A15" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A15" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A15s</p>
+            <input type="number" id="cantidadProducto4" min="4" placeholder="Cantidad">
+            <button onclick="addProduct('Sansung Galaxy A15', 'cantidadProducto4')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Redmi Note 10 4G" class="slider-img">
+                <img src="agotado.png" alt="Redmi Note 10 4G" class="slider-img">
+                <img src="agotado.png" alt="Redmi Note 10 4G" class="slider-img">
+            </div>
+            <p class="product-name">Redmi Note 10 4G</p>
+            <input type="number" id="cantidadProducto5" min="5" placeholder="Cantidad">
+            <button onclick="addProduct('Redmi Note 10 4G', 'cantidadProducto5')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="sga13-1.png" alt="Sansung Galaxy A13" class="slider-img">
+                <img src="sga13-2.png" alt="Sansung Galaxy A13" class="slider-img">
+                <img src="sga13-3.png" alt="Sansung Galaxy A13" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A13</p>
+            <input type="number" id="cantidadProducto6" min="6" placeholder="Cantidad">
+            <button onclick="addProduct('Sansung Galaxy A13', 'cantidadProducto6')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="redmi9a-1.png" alt="Xiaomi Remi 9A" class="slider-img">
+                <img src="redmi9a-2.png" alt="Xiaomi Remi 9A" class="slider-img">
+                <img src="redmi9a-3.png" alt="Xiaomi Remi 9A" class="slider-img">
+            </div>
+            <p class="product-name">Xiaomi Remi 9A</p>
+            <input type="number" id="cantidadProducto7" min="8" placeholder="Cantidad"> <button onclick="addProduct('Xiaomi Remi 9A', 'cantidadProducto7')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Iphone 7+" class="slider-img">
+                <img src="agotado.png" alt="Iphone 7+" class="slider-img">
+                <img src="agotado.png" alt="Iphone 7+" class="slider-img">
+            </div>
+            <p class="product-name">Iphone 7+</p>
+            <input type="number" id="cantidadProducto8" min="9" placeholder="Cantidad"> <button onclick="addProduct('Iphone 7+', 'cantidadProducto8')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="redminote13pro+-1.png" alt="Xiaomi Redmi Note 13 Pro" class="slider-img">
+                <img src="redminote13pro+-2.png" alt="Xiaomi Redmi Note 13 Pro" class="slider-img">
+                <img src="redminote13pro+-3.png" alt="Xiaomi Redmi Note 13 Pro" class="slider-img">
+            </div>
+            <p class="product-name">Xiaomi Redmi Note 13 Pro+</p>
+            <input type="number" id="cantidadProducto9" min="10" placeholder="Cantidad"> <button onclick="addProduct('Xiaomi Redmi Note 13 Pro+', 'cantidadProducto9')">Agregar</button>
+        </div>
+        
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Xiaomi Redmi Note 10 Pro" class="slider-img">
+                <img src="agotado.png" alt="Xiaomi Redmi Note 10 Pro" class="slider-img">
+                <img src="agotado.png" alt="Xiaomi Redmi Note 10 Pro" class="slider-img">
+            </div>
+            <p class="product-name">Xiaomi Redmi Note 13 4G</p>
+            <input type="number" id="cantidadProducto10" min="11" placeholder="Cantidad"> <button onclick="addProduct('Xiaomi Redmi Note 13 4G', 'cantidadProducto10')">Agregar</button>
+        </div>
+
+    
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="tecnosparl2023-1.png" alt="Tecno Spark Pop 7" class="slider-img">
+                <img src="tecnosparl2023-2.png" alt="Tecno Spark Pop 7" class="slider-img">
+                <img src="tecnosparl2023-3.png" alt="Tecno Spark Pop 7" class="slider-img">
+            </div>
+            <p class="product-name">Tecno Spark Pop 7/2023</p>
+            <input type="number" id="cantidadProducto12" min="13" placeholder="Cantidad"> <button onclick="addProduct('Tecno Spark Pop 7/2023', 'cantidadProducto12')">Agregar</button>
+        </div>
+        
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="sga12.png" alt="Sansung Galaxy A12" class="slider-img">
+                <img src="sga12-1.png" alt="Sansung Galaxy A12" class="slider-img">
+                <img src="sga12-2.png" alt="Sansung Galaxy A12" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A12</p>
+            <input type="number" id="cantidadProducto13" min="14" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A12', 'cantidadProducto13')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="redmia1-1.png" alt="Xiaomi Redmi A1" class="slider-img">
+                <img src="redmia1-2.png" alt="Xiaomi Redmi A1" class="slider-img">
+                <img src="redmia1-3.png" alt="Xiaomi Redmi A1" class="slider-img">
+            </div>
+            <p class="product-name">Xiaomi Redmi A1/A2</p>
+            <input type="number" id="cantidadProducto14" min="15" placeholder="Cantidad"> <button onclick="addProduct('Xiaomi Redmi A1/A2', 'cantidadProducto14')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="sga05-1.png" alt="Sansung Galaxy A05" class="slider-img">
+                <img src="sga05-2.png" alt="Sansung Galaxy A05" class="slider-img">
+                <img src="sga05-3.png" alt="Sansung Galaxy A05" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A05</p>
+            <input type="number" id="cantidadProducto15" min="17" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A05', 'cantidadProducto15')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="sga05s-1.png" alt="Sansung Galaxy A05s" class="slider-img">
+                <img src="sga05s-2.png" alt="Sansung Galaxy A05s" class="slider-img">
+                <img src="sga05s-3.png" alt="Sansung Galaxy A05s" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A05s</p>
+            <input type="number" id="cantidadProducto16" min="18" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A05s', 'cantidadProducto16')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Sansung Galaxy A10" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A10" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A10" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A10</p>
+            <input type="number" id="cantidadProducto17" min="19" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A10', 'cantidadProducto17')">Agregar</button>
+        </div> 
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Sansung Galaxy A10" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A10" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A10" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A10-R</p>
+            <input type="number" id="cantidadProducto18" min="19" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A10', 'cantidadProducto18')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Sansung Galaxy A10s" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A10s" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A10s" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A10s</p>
+            <input type="number" id="cantidadProducto19" min="20" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A10s', 'cantidadProducto19')">Agregar</button>
+        </div>
+        
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Sansung Galaxy A11" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A11" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A11" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A11</p>
+            <input type="number" id="cantidadProducto20" min="21" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A11', 'cantidadProducto20')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="sga14-1.png" alt="Sansung Galaxy A14" class="slider-img">
+                <img src="sga14-2.png" alt="Sansung Galaxy A14" class="slider-img">
+                <img src="sga14-3.png" alt="Sansung Galaxy A14" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A14</p>
+            <input type="number" id="cantidadProducto21" min="22" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A14', 'cantidadProducto21')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="sga15-1.png" alt="Sansung Galaxy A15" class="slider-img">
+                <img src="sga15-2.png" alt="Sansung Galaxy A15" class="slider-img">
+                <img src="sga15-3.png" alt="Sansung Galaxy A15" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A15</p>
+            <input type="number" id="cantidadProducto22" min="23" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A15', 'cantidadProducto22')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A16</p>
+            <input type="number" id="cantidadProducto23" min="24" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A16', 'cantidadProducto23')">Agregar</button>
+        </div>
+
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A16-R</p>
+            <input type="number" id="cantidadProducto24" min="25" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A16-R', 'cantidadProducto24')">Agregar</button>
+        </div>
+
+
+        
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A20</p>
+            <input type="number" id="cantidadProducto25" min="26" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A20', 'cantidadProducto25')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A20S</p>
+            <input type="number" id="cantidadProducto26" min="27" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A20S', 'cantidadProducto26')">Agregar</button>
+        </div>
+
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A21</p>
+            <input type="number" id="cantidadProducto27" min="28" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A21', 'cantidadProducto27')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A21S</p>
+            <input type="number" id="cantidadProducto28" min="29" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A21S', 'cantidadProducto28')">Agregar</button>
+        </div>
+        
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A22</p>
+            <input type="number" id="cantidadProducto29" min="30" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A22', 'cantidadProducto29')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="sga22s-1.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="sga225g-2.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="sga225g-3.png" alt="Sansung Galaxy A16" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A22 5G</p>
+            <input type="number" id="cantidadProducto30" min="31" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A22 5G', 'cantidadProducto30')">Agregar</button>
+        </div>
+        
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="sga23-1.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="sga23-2.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="sga23-3.png" alt="Sansung Galaxy A16" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A23 5G</p>
+            <input type="number" id="cantidadProducto31" min="32" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A23 5G', 'cantidadProducto31')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="sga25-1.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="sga25-2.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="sga25-3.png" alt="Sansung Galaxy A16" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A25 5G</p>
+            <input type="number" id="cantidadProducto32" min="33" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A25 5G', 'cantidadProducto32')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="sga32-1.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="sga32-2.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="sga32-3.png" alt="Sansung Galaxy A16" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A32</p>
+            <input type="number" id="cantidadProducto33" min="34" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A32 5G', 'cantidadProducto33')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="sga33-1.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="sga33-2.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="sga33-3.png" alt="Sansung Galaxy A16" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A33</p>
+            <input type="number" id="cantidadProducto34" min="35" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A33 5G', 'cantidadProducto34')">Agregar</button>
+        </div>
+
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A50</p>
+            <input type="number" id="cantidadProducto35" min="36" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A50', 'cantidadProducto35')">Agregar</button>
+        </div>
+
+        
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A51</p>
+            <input type="number" id="cantidadProducto36" min="37" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A51', 'cantidadProducto36')">Agregar</button>
+        </div>
+
+            
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="sga54r-1.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="sga54r-2.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="sga54r-3.png" alt="Sansung Galaxy A16" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A54-R</p>
+            <input type="number" id="cantidadProducto37" min="38" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A54-R', 'cantidadProducto37')">Agregar</button>
+        </div>
+
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="sga35-1.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="sga35-2.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="sga35-3.png" alt="Sansung Galaxy A16" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A35/A55S</p>
+            <input type="number" id="cantidadProducto38" min="39" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A35/55S', 'cantidadProducto38')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="sag17r-1.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="sga70r-2.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="sga70r-3.png" alt="Sansung Galaxy A16" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A70-R</p>
+            <input type="number" id="cantidadProducto39" min="40" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A70-R', 'cantidadProducto39')">Agregar</button>
+        </div>
+
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="sga30s-1.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="sga30s-2.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="sga30s-3.png" alt="Sansung Galaxy A16" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A30S</p>
+            <input type="number" id="cantidadProducto40" min="41" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A30S', 'cantidadProducto40')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+                <img src="agotado.png" alt="Sansung Galaxy A16" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A24 4G</p>
+            <input type="number" id="cantidadProducto41" min="42" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A24 4G', 'cantidadProducto41')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Xiaomi Redmi A2+" class="slider-img">
+                <img src="agotado.png" alt="Xiaomi Redmi A2+" class="slider-img">
+                <img src="agotado.png" alt="Xiaomi Redmi A2+" class="slider-img">
+            </div>
+            <p class="product-name">Xiaomi Redmi A2+</p>
+            <input type="number" id="cantidadProducto42" min="43" placeholder="Cantidad"> <button onclick="addProduct('Xiaomi Redmi A2+', 'cantidadProducto42')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Xiaomi Redmi 10C" class="slider-img">
+                <img src="agotado.png" alt="Xiaomi Redmi 10C" class="slider-img">
+                <img src="agotado.png" alt="Xiaomi Redmi 10C" class="slider-img">
+            </div>
+            <p class="product-name">Xiaomi Redmi 10C</p>
+            <input type="number" id="cantidadProducto43" min="44" placeholder="Cantidad"> <button onclick="addProduct('Xiaomi Redmi 10C', 'cantidadProducto43')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="redmi9-1.png" alt="Xiaomi Redmi 9" class="slider-img">
+                <img src="redmi9-2.png" alt="Xiaomi Redmi 12C" class="slider-img">
+                <img src="redmi9-3.png" alt="Xiaomi Redmi 12C" class="slider-img">
+            </div>
+            <p class="product-name">Xiaomi Redmi 9</p>
+            <input type="number" id="cantidadProducto44" min="45" placeholder="Cantidad"> <button onclick="addProduct('Xiaomi Redmi 9', 'cantidadProducto44')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="redmi10-1.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="redmi10-2.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="redmi10-3.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Xiaomi Redmi 10</p>
+            <input type="number" id="cantidadProducto45" min="46" placeholder="Cantidad"> <button onclick="addProduct('Xiaomi Redmi 10', 'cantidadProducto45')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="sga04s-1.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="sga04s-2.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="sga04s-3.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A04S</p>
+            <input type="number" id="cantidadProducto46" min="47" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A04S', 'cantidadProducto46')">Agregar</button>
+        </div>
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="sga04e-1.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="sga04e-2.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="sga04e-3.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A04E</p>
+            <input type="number" id="cantidadProducto47" min="48" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A04E', 'cantidadProducto47')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="sga06-1.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="sga06-2.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="sga06-3.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy A06</p>
+            <input type="number" id="cantidadProducto48" min="49" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy A06', 'cantidadProducto48')">Agregar</button>
+        </div>
+        
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="sgj2prime-1.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="sgj2prime-2.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="sgj2prime-3.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy J2 Prime</p>
+            <input type="number" id="cantidadProducto49" min="50" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy J2 Prime', 'cantidadProducto49')">Agregar</button>
+        </div>
+
+ <div class="product-card">
+            <div class="image-slider">
+                <img src="sgaj3-1.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="sgaj3-2.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="sgaj3-3.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy J3</p>
+            <input type="number" id="cantidadProducto51" min="51" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy J3', 'cantidadProducto51')">Agregar</button>
+        </div>
+
+ <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="agotado.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="agotado.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy J2 Core</p>
+            <input type="number" id="cantidadProducto52" min="52" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy J2 Core', 'cantidadProducto52')">Agregar</button>
+        </div>
+
+ <div class="product-card">
+            <div class="image-slider">
+                <img src="sgam14-1.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="sgam14-2.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="sgam14-3.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy M14 5G</p>
+            <input type="number" id="cantidadProducto53" min="53" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy M14 5G', 'cantidadProducto53')">Agregar</button>
+        </div>
+
+ <div class="product-card">
+            <div class="image-slider">
+                <img src="sgas7-1.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="sgas7-2.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="sgas7-3.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy S7</p>
+            <input type="number" id="cantidadProducto54" min="54" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy S7', 'cantidadProducto54')">Agregar</button>
+        </div>
+
+<div class="product-card">
+            <div class="image-slider">
+                <img src="sgas21fe-1.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="sgas21fe-2.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="sgas21fe-3.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy S21 FE</p>
+            <input type="number" id="cantidadProducto55" min="55" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy S21 FE', 'cantidadProducto55')">Agregar</button>
+        </div>
+
+       <div class="product-card">
+            <div class="image-slider">
+                <img src="sgas20fe-1.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="sgas20fe-2.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="sgas20fe-3.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy S20 FE</p>
+            <input type="number" id="cantidadProducto56" min="56" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy S20 FE', 'cantidadProducto56')">Agregar</button>
+        </div>
+        
+ <div class="product-card">
+            <div class="image-slider">
+                <img src="sgas20ultra-1.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="sgas20ultra-2.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="sgas20ultra-3.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Sansung Galaxy S20 Ultra</p>
+            <input type="number" id="cantidadProducto57" min="57" placeholder="Cantidad"> <button onclick="addProduct('Sansung Galaxy S20 Ultra', 'cantidadProducto57')">Agregar</button>
+        </div>
+       
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="agotado.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="agotado.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="agotado.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Xiaomi Redmi Note 8</p>
+            <input type="number" id="cantidadProducto58" min="58" placeholder="Cantidad"> <button onclick="addProduct('Xiaomi Redmi Note 8', 'cantidadProducto58')">Agregar</button>
+        </div>
+
+ <div class="product-card">
+            <div class="image-slider">
+                <img src="redminote9-1.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="redminote9-2.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="redminote9-3.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Xiaomi Redmi Note 9</p>
+            <input type="number" id="cantidadProducto59" min="59" placeholder="Cantidad"> <button onclick="addProduct('Xiaomi Redmi Note 9', 'cantidadProducto59')">Agregar</button>
+        </div>
+
+<div class="product-card">
+            <div class="image-slider">
+                <img src="redminote10-1.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="redminote10-2.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="redminote10-3.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Xiaomi Redmi Note 10</p>
+            <input type="number" id="cantidadProducto60" min="60" placeholder="Cantidad"> <button onclick="addProduct('Xiaomi Redmi Note 10', 'cantidadProducto60')">Agregar</button>
+        </div>
+
+<div class="product-card">
+            <div class="image-slider">
+                <img src="redminote10pro-1.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="redminote10pro-2.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="redminote10pro-3.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Xiaomi Redmi Note 10 Pro</p>
+            <input type="number" id="cantidadProducto61" min="61" placeholder="Cantidad"> <button onclick="addProduct('Xiaomi Redmi Note 10 Pro', 'cantidadProducto61')">Agregar</button>
+        </div>
+
+        <div class="product-card">
+            <div class="image-slider">
+                <img src="redminote12-1.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="redminote12-2.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="redminote12-3.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Xiaomi Redmi Note 12 4G</p>
+            <input type="number" id="cantidadProducto62" min="62" placeholder="Cantidad"> <button onclick="addProduct('Xiaomi Redmi Note 12 4G', 'cantidadProducto62')">Agregar</button>
+        </div>
+
+<div class="product-card">
+            <div class="image-slider">
+                <img src="redminote12pro-1.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="redminote12pro-2.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="redminote12pro-3.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Xiaomi Redmi Note 12 Pro</p>
+            <input type="number" id="cantidadProducto63" min="63" placeholder="Cantidad"> <button onclick="addProduct('Xiaomi Redmi Note 12 Pro', 'cantidadProducto63')">Agregar</button>
+        </div>
+<div class="product-card">
+            <div class="image-slider">
+                <img src="realme7-1.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="realme7-2.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="realme7-3.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Realme 7</p>
+            <input type="number" id="cantidadProducto73" min="73" placeholder="Cantidad"> <button onclick="addProduct('Realme 7', 'cantidadProducto73')">Agregar</button>
+        </div>
+
+<div class="product-card">
+            <div class="image-slider">
+                <img src="realmec11-1.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="realmec11-2.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="realmec11-3.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Realme C11</p>
+            <input type="number" id="cantidadProducto74" min="74" placeholder="Cantidad"> <button onclick="addProduct('Realme C11', 'cantidadProducto74')">Agregar</button>
+        </div>
+
+<div class="product-card">
+            <div class="image-slider">
+                <img src="realmec21y-1.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="realmec21y-2.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="realmec21y-3.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Realme C21-Y</p>
+            <input type="number" id="cantidadProducto75" min="75" placeholder="Cantidad"> <button onclick="addProduct('Realme C21-Y', 'cantidadProducto75')">Agregar</button>
+        </div>
+
+
+<div class="product-card">
+            <div class="image-slider">
+                <img src="pocom3-1.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="pocom3-2.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="pocom3-3.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Poco M3</p>
+            <input type="number" id="cantidadProducto76" min="76" placeholder="Cantidad"> <button onclick="addProduct('Poco M3', 'cantidadProducto76')">Agregar</button>
+        </div>
+
+<div class="product-card">
+            <div class="image-slider">
+                <img src="pocox3-1.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="pocox3-2.png" alt="Xiaomi Redmi 13C" class="slider-img">
+                <img src="pocox3-3.png" alt="Xiaomi Redmi 13C" class="slider-img">
+            </div>
+            <p class="product-name">Poco X3</p>
+            <input type="number" id="cantidadProducto78" min="78" placeholder="Cantidad"> <button onclick="addProduct('Poco X3', 'cantidadProducto78')">Agregar</button>
+        </div>
+
+<div class="product-card">
+    <div class="image-slider">
+        <img src="cover de astronauta.jpg" alt="Xiaomi Redmi 13C" class="slider-img">
+        <img src="cover de astronauta.jpg" alt="Xiaomi Redmi 13C" class="slider-img">
+        <img src="cover de astronauta.jpg" alt="Xiaomi Redmi 13C" class="slider-img">
+    </div>
+    <p class="product-name">Cover de Astronauta</p>
+    <a href="cover de astronauta.html" class="boton-ver-mas">Ver Modelos Disponibles</a>
+</div>
+
+    </div>
+
+    
+
+    
+ 
+    <!-- Tabla de Productos Agregados -->
+    <div class="product-table">
+        <h3>Productos Solicitados</h3>
+        <table id="productTable">
+            <thead>
+                <tr>
+                    <th>Nombre del Producto</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Productos agregados se muestran aquí -->
+            </tbody>
+        </table>
+        <button onclick="calculateTotal()">Calcular Precio Total</button>
+        <p>Total: <span id="totalPrice">0</span> CUP</p>
+        <button id="requestButton" onclick="sendWhatsApp()" disabled>Solicitar</button>
+    </div>
+
+    <script src="cover-scrip.js"></script>
+</body>
+</html>
