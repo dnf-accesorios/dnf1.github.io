@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos de Teléfonos</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #e0f7fa; /* Azul claro muy suave */
+            color: #333;
+        }
+
+        h1, h2 {
+            color: #00bcd4; /* Azul claro más intenso */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Contenedores principales */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #ffffff; /* Blanco */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        /* Tabla de productos disponibles */
+        .product-selection-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        .product-selection-table th,
+        .product-selection-table td {
+            border: 1px solid #b2ebf2; /* Borde azul claro */
+            padding: 12px;
+            text-align: left;
+        }
+
+        .product-selection-table th {
+            background-color: #80deea; /* Azul claro medio */
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .product-selection-table tr:nth-child(even) {
+            background-color: #e0f7fa; /* Azul claro muy suave para filas pares */
+        }
+
+        .product-selection-table input[type="number"] {
+            width: 70px;
+            padding: 8px;
+            border: 1px solid #00bcd4;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .product-selection-table input[type="checkbox"] {
+            transform: scale(1.3);
+            margin-right: 5px;
+        }
+
+        /* Botones principales */
+        .button-group {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .main-button {
+            background-color: #00bcd4; /* Azul claro */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .main-button:hover {
+            background-color: #0097a7; /* Azul más oscuro al pasar el mouse */
+        }
+
+        /* Tabla de resumen del pedido */
+        #orderSummaryTable {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        #orderSummaryTable th,
+        #orderSummaryTable td {
+            border: 1px solid #b2ebf2;
+            padding: 12px;
+            text-align: left;
+        }
+
+        #orderSummaryTable th {
+            background-color: #80deea;
+            color: #fff;
+        }
+
+        #orderSummaryTable tr:nth-child(even) {
+            background-color: #e0f7fa;
+        }
+
+        #totalPrice {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #00bcd4;
+            text-align: right;
+            margin-top: 15px;
+        }
+
+        /* Mensaje de WhatsApp */
+        .whatsapp-message {
+            display: none; /* Se mostrará con JavaScript */
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e0f2f7;
+            border: 1px solid #b2ebf2;
+            border-radius: 5px;
+            color: #00796b;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Selección de Teléfonos</h1>
+
+        <h2>Modelos Disponibles</h2>
+        <table class="product-selection-table">
+            <thead>
+                <tr>
+                    <th>Seleccionar</th>
+                    <th>Modelo</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><input type="checkbox" data-model="REDMI 9A"></td><td>REDMI 9A</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="REDMI 9C"></td><td>REDMI 9C</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="REDMI 10C"></td><td>REDMI 10C</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="REDMI 8A"></td><td>REDMI 8A</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="REDMI A3"></td><td>REDMI A3</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="REDMI 12 4G"></td><td>REDMI 12 4G</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="MI POCO X3 PRO"></td><td>MI POCO X3 PRO</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="7G/8G"></td><td>7G/8G</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="7P/8P"></td><td>7P/8P</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="IPX/XS"></td><td>IPX/XS</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="IP XR"></td><td>IP XR</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="IPXS MAX"></td><td>IPXS MAX</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="IP11 6.1"></td><td>IP11 6.1</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="IP11 PRO 5.8"></td><td>IP11 PRO 5.8</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="IP11 PRO MAX 6.5"></td><td>IP11 PRO MAX 6.5</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="IP12 6.1"></td><td>IP12 6.1</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="IP12 PRO 6.1"></td><td>IP12 PRO 6.1</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="IP12 PRO MAX 6.7"></td><td>IP12 PRO MAX 6.7</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="SAM A05"></td><td>SAM A05</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="SAM A05S"></td><td>SAM A05S</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="SAM A15"></td><td>SAM A15</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="SAM A20"></td><td>SAM A20</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="S20FE"></td><td>S20FE</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="S21 ULTRA"></td><td>S21 ULTRA</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="S22"></td><td>S22</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="SAM A02"></td><td>SAM A02</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="SAM A03 164"></td><td>SAM A03 164</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="SAM A03S 164"></td><td>SAM A03S 164</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="SAM A04"></td><td>SAM A04</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="SAM A04E"></td><td>SAM A04E</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="S21"></td><td>S21</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="TECNO GO 1"></td><td>TECNO GO 1</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="SPARK GO 2023"></td><td>SPARK GO 2023</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="SPARK GO 2024"></td><td>SPARK GO 2024</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+                <tr><td><input type="checkbox" data-model="SPARK GO 2025"></td><td>SPARK GO 2025</td><td><input type="number" min="0" value="0" class="quantity-input"></td></tr>
+            </tbody>
+        </table>
+
+        <div class="button-group">
+            <button id="updateOrderButton" class="main-button">Actualizar Pedido</button>
+        </div>
+
+        <h2>Resumen del Pedido</h2>
+        <table id="orderSummaryTable">
+            <thead>
+                <tr>
+                    <th>Modelo</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+        <div id="totalPrice">
+            Precio Total: $0.00
+        </div>
+
+        <div class="button-group">
+            <button id="calculatePriceButton" class="main-button">Calcular Precio</button>
+            <button id="requestOrderButton" class="main-button">Solicitar por WhatsApp</button>
+        </div>
+    </div>
+
+    <script>
+        const PRICE_PER_UNIT = 1200; // Cada producto cuesta 1200 pesos
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const productCheckboxes = document.querySelectorAll('.product-selection-table input[type="checkbox"]');
+            const quantityInputs = document.querySelectorAll('.product-selection-table .quantity-input');
+            const orderSummaryTableBody = document.querySelector('#orderSummaryTable tbody');
+            const totalPriceDisplay = document.getElementById('totalPrice');
+            const updateOrderButton = document.getElementById('updateOrderButton');
+            const calculatePriceButton = document.getElementById('calculatePriceButton');
+            const requestOrderButton = document.getElementById('requestOrderButton');
+            const whatsappNumber = '+5359752791';
+
+            // Función para actualizar la tabla de resumen del pedido
+            function updateOrderSummary() {
+                orderSummaryTableBody.innerHTML = ''; // Limpiar tabla de resumen
+                let totalOrderPrice = 0;
+                let orderDetails = []; // Para el mensaje de WhatsApp
+
+                productCheckboxes.forEach((checkbox, index) => {
+                    if (checkbox.checked) {
+                        const model = checkbox.dataset.model;
+                        const quantityInput = quantityInputs[index];
+                        let quantity = parseInt(quantityInput.value);
+
+                        // Asegurarse de que la cantidad no sea negativa
+                        if (isNaN(quantity) || quantity < 1) {
+                            quantity = 1; // Si no es un número o es 0/negativo, establecer a 1
+                            quantityInput.value = 1; // Actualizar el input visualmente
+                        }
+
+                        const subtotal = quantity * PRICE_PER_UNIT;
+                        totalOrderPrice += subtotal;
+
+                        const row = orderSummaryTableBody.insertRow();
+                        row.insertCell(0).textContent = model;
+                        row.insertCell(1).textContent = quantity;
+                        row.insertCell(2).textContent = `$${PRICE_PER_UNIT.toFixed(2)}`;
+                        row.insertCell(3).textContent = `$${subtotal.toFixed(2)}`;
+
+                        orderDetails.push(`${model} (x${quantity})`);
+                    }
+                });
+
+                totalPriceDisplay.textContent = `Precio Total: $${totalOrderPrice.toFixed(2)}`;
+                return orderDetails; // Devolver los detalles para WhatsApp
+            }
+
+            // Event listener para el botón "Actualizar Pedido"
+            updateOrderButton.addEventListener('click', updateOrderSummary);
+
+            // Event listener para el botón "Calcular Precio"
+            calculatePriceButton.addEventListener('click', updateOrderSummary);
+
+            // Event listener para el botón "Solicitar por WhatsApp"
+            requestOrderButton.addEventListener('click', () => {
+                const orderDetails = updateOrderSummary(); // Obtener los detalles actuales del pedido
+                if (orderDetails.length === 0) {
+                    alert('Por favor, selecciona al menos un producto para realizar un pedido.');
+                    return;
+                }
+
+                const finalMessage = `Hola, quiero hacer el siguiente pedido:\n\n${orderDetails.join('\n')}\n\nPrecio Total: $${parseFloat(totalPriceDisplay.textContent.replace('Precio Total: $', '')).toFixed(2)}\n\nGracias!`;
+                const encodedMessage = encodeURIComponent(finalMessage);
+                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+                window.open(whatsappURL, '_blank');
+            });
+
+            // Opcional: Desmarcar checkbox si la cantidad es 0 y se cambia manualmente
+            quantityInputs.forEach(input => {
+                input.addEventListener('change', (event) => {
+                    const checkbox = event.target.closest('tr').querySelector('input[type="checkbox"]');
+                    if (parseInt(event.target.value) === 0) {
+                        checkbox.checked = false;
+                    } else {
+                        checkbox.checked = true;
+                    }
+                });
+            });
+
+            // Opcional: Establecer cantidad a 1 si se marca el checkbox y la cantidad es 0
+            productCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', (event) => {
+                    const quantityInput = event.target.closest('tr').querySelector('.quantity-input');
+                    if (event.target.checked && parseInt(quantityInput.value) === 0) {
+                        quantityInput.value = 1;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Productos</title>
+    <link rel="stylesheet" href="styles audifono.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <header>
+        <nav class="navbar">
+            <div class="logo"><img src="logo.png" alt="logo img"></div>
+            <ul class="nav-links">
+                <li class="nav-item"><a href="index.html">Home</a>
+                    <ul class="submenu">
+                        <li><a href="mica.html">Mica</a></li>                       
+                        <li><a href="cover.html">Cover</a></li>
+                        <li><a href="Cargador.html">Cargadores</a></li>
+                        <li><a href="bateria.html">Batería</a></li>
+                        <li><a href="telefono.html">Telefono</a></li>
+                        <li><a href="otros.html">Otros...</a></li>
+                    </ul>
+                </li>
+            </li>
+            <li class="nav-item"><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <!-- Contenido principal con imagen de fondo -->
+    <div class="cover-image">
+        <div class="content">
+            <h2>Modelos</h2>
+            <div class="product-gallery">
+                <!-- Recuadros de productos con transiciones de imagen y tarifas -->
+                <!-- Producto 1 -->
+                <div class="product-card">
+                    <div class="slider">
+                        <img src="M-201.jpg" alt="Producto 1 - Imagen 1">
+                        <img src="m202.jpg" alt="Producto 1 - Imagen 2">
+                        <img src="m203.webp" alt="Producto 1 - Imagen 3">
+                    </div>
+                    <div class="product-name">Audifono Inalambrico M20</div>
+                    <button onclick="toggleTariff('tariff1')">Ver tarifas</button>
+                    <ul id="tariff1" class="tariff-list">
+                        <li>1 unidad: 3000 CUP</li>
+                        <li>A partir de 10 unidades: 2450 CUP</li>
+                    </ul>
+                    <input type="number" id="cantidad1" placeholder="Cantidad">
+                    <button onclick="addToTable('Audifono Inalambrico M20', 'cantidad1', 3000, 2450)">Agregar</button>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <div class="slider">
+                        <img src="m10 1.jpg" alt="Producto 2 - Imagen 1">
+                        <img src="m10 2.webp" alt="Producto 2 - Imagen 2">
+                        <img src="m10 3.jpg" alt="Producto 2 - Imagen 3">
+                    </div>
+                    <div class="product-name">Audifono Inalambrico M10</div>
+                    <button onclick="toggleTariff('tariff2')">Ver tarifas</button>
+                    <ul id="tariff2" class="tariff-list">
+                        <li>1 unidad: 3000 CUP</li>
+                        <li>A partir de 10 unidades: 2250 CUP</li>
+                    </ul>
+                    <input type="number" id="cantidad2" placeholder="Cantidad">
+                    <button onclick="addToTable('Audifono Inalambrico M10', 'cantidad2', 3000, 2250)">Agregar</button>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="product-card">
+                    <div class="slider">
+                        <img src="m19 1.jpg" alt="Producto 3 - Imagen 1">
+                        <img src="m19 2.webp" alt="Producto 3 - Imagen 2">
+                        <img src="m19 3.jfif" alt="Producto 3 - Imagen 3">
+                    </div>
+                    <div class="product-name">Audifono Inalambrico M19</div>
+                    <button onclick="toggleTariff('tariff3')">Ver tarifas</button>
+                    <ul id="tariff3" class="tariff-list">
+                        <li>1 unidad: 2500 CUP</li>
+                        <li>A partir de 10 unidades: 3000 CUP</li>
+                    </ul>
+                    <input type="number" id="cantidad3" placeholder="Cantidad">
+                    <button onclick="addToTable('Audifono Inalambrico M19', 'cantidad3', 147, 132)">Agregar</button>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="product-card">
+                    <div class="slider">
+                        <img src="m30 11.jfif" alt="Producto 4 - Imagen 1">
+                        <img src="m30 2.jfif" alt="Producto 4 - Imagen 2">
+                        <img src="m30 3.jfif" alt="Producto 4 - Imagen 3">
+                    </div>
+                    <div class="product-name">Audifono Inalambrico M30</div>
+                    <button onclick="toggleTariff('tariff4')">Ver tarifas</button>
+                    <ul id="tariff4" class="tariff-list">
+                        <li>1 unidad: 3000 CUP</li>
+                        <li>A partir de 5 unidades: 2550 CUP</li>
+                    </ul>
+                    <input type="number" id="cantidad4" placeholder="Cantidad">
+                    <button onclick="addToTable('Audifono Inalambrico M30', 'cantidad4', 2550, 3000)">Agregar</button>
+                </div>
+
+         
+                <!-- Producto 5 -->
+                <div class="product-card">
+                    <div class="slider">
+                        <img src="adecable-1.webp" alt="Producto 4 - Imagen 1">
+                        <img src="adecable-2.webp" alt="Producto 4 - Imagen 2">
+                        <img src="adecable-3.webp" alt="Producto 4 - Imagen 3">
+                    </div>
+                    <div class="product-name">Audifono de Cable</div>
+                    <button onclick="toggleTariff('tariff5')">Ver tarifas</button>
+                    <ul id="tariff5" class="tariff-list">
+                        <li>1 unidad: 600 CUP</li>
+                        <li>A partir de 100 unidades: 350 CUP</li>
+                    </ul>
+                    <input type="number" id="cantidad5" placeholder="Cantidad">
+                    <button onclick="addToTable('Audifono de Cable', 'cantidad5', 350, 600)">Agregar</button>
+                </div>
+
+
+
+            <!-- Tabla de productos agregados -->
+            <div class="product-table">
+                <table id="product-table">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Productos agregados se mostrarán aquí -->
+                    </tbody>
+                </table>
+                <button onclick="calculateTotal()">Calcular</button>
+                <div id="total-price"></div>
+                <button id="solicitar-btn" onclick="sendWhatsApp()" disabled>Solicitar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="audifono-cryp.js"></script>
+</body>
+</html>

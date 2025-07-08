@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Baterías</title>
+    <link rel="stylesheet" href="styles bateria.css">
+</head>
+<body>
+    <!-- Barra de Navegación -->
+    <header>
+        <nav class="navbar">
+            <div class="logo"><img src="logo.png" alt="logo img"></div>
+            <ul class="nav-links">
+                <li class="nav-item"><a href="index.html">Home</a>
+                    <ul class="submenu">
+                        <li><a href="mica.html">Mica</a></li>                        
+                        <li><a href="telefono.html">Teléfono</a></li>
+                        <li><a href="Cargador.html">Cargadores</a></li>
+                        <li><a href="cover.html">Cover</a></li>
+                        <li><a href="audifono.html">Audífono</a></li>
+                        <li><a href="otros.html">Otros...</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item"><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main>
+        <div class="productos-container">
+            <!-- Recuadros de productos -->
+            <div class="producto" id="producto1">
+                <img src="bateria iphone 1.webp" alt="Producto 1">
+                <button onclick="toggleMenu('menu1')">Mostrar Tarifas</button>
+                <div id="menu1" class="menu">
+                    <p>Iphone X: 1 unidad - 6000 CUP, a partir de 20 unidades - 4500 CUP</p>
+                    <input type="number" id="cantidad1" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Iphone X', 6000, 4500, 'cantidad1')">Agregar</button>
+                </div>
+            </div>
+            
+            <!-- Repetir para los otros 24 productos -->
+            <!-- Ejemplo para el segundo producto -->
+            <div class="producto" id="producto2">
+                <img src="j7 metal1.webp" alt="Producto 2">
+                <button onclick="toggleMenu('menu2')">Mostrar Tarifas</button>
+                <div id="menu2" class="menu">
+                    <p>Sansung Galaxy J7 Metal: 1 unidad - 4000 CUP, a partir de 20 unidades - 2200 CUP</p>
+                    <input type="number" id="cantidad2" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Sansung Galaxy J7 Metal', 4000, 2300, 'cantidad2')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="producto" id="producto3">
+                <img src="j5 metal1.webp" alt="Producto 3">
+                <button onclick="toggleMenu('menu3')">Mostrar Tarifas</button>
+                <div id="menu3" class="menu">
+                    <p>Sansung Galaxy J5 Metal: 1 unidad - 4000 CUP, a partir de 20 unidades - 2200 CUP</p>
+                    <input type="number" id="cantidad3" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Sansung Galaxy J5 Metal', 4000, 2200, 'cantidad3')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="producto" id="producto4">
+                <img src="a10s 1.jpg" alt="Producto 4">
+                <button onclick="toggleMenu('menu4')">Mostrar Tarifas</button>
+                <div id="menu4" class="menu">
+                    <p>Sansung Galaxy A10S: 1 unidad - 4000 CUP, a partir de 20 unidades - 2800 CUP</p>
+                    <input type="number" id="cantidad4" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Sansung Galaxy A10S', 4000, 2800, 'cantidad4')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="producto" id="producto5">
+                <img src="j7 1.jfif" alt="Producto 5">
+                <button onclick="toggleMenu('menu5')">Mostrar Tarifas</button>
+                <div id="menu5" class="menu">
+                    <p>Sansung Galaxy J7: 1 unidad - 4000 CUP, a partir de 20 unidades - 2400 CUP</p>
+                    <input type="number" id="cantidad5" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Sansung Galaxy J7', 4000, 2400, 'cantidad5')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="producto" id="producto6">
+                <img src="j1 1.jpg" alt="Producto 6">
+                <button onclick="toggleMenu('menu6')">Mostrar Tarifas</button>
+                <div id="menu6" class="menu">
+                    <p>Sansung Galaxy J1: 1 unidad - 4000 CUP, a partir de 20 unidades - 2000 CUP</p>
+                    <input type="number" id="cantidad6" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Sansung Galaxy J1', 4000, 2000, 'cantidad6')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="producto" id="producto7">
+                <img src="redmi note 7 1.jpg" alt="Producto 7">
+                <button onclick="toggleMenu('menu7')">Mostrar Tarifas</button>
+                <div id="menu7" class="menu">
+                    <p>Xiaomi Redmi Note 7: 1 unidad - 4000 CUP, a partir de 20 unidades - 2400 CUP</p>
+                    <input type="number" id="cantidad7" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Sansung Galaxy J1', 4000, 2400, 'cantidad7')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="producto" id="producto8">
+                <img src="sx 1.jpg" alt="Producto 8">
+                <button onclick="toggleMenu('menu8')">Mostrar Tarifas</button>
+                <div id="menu8" class="menu">
+                    <p>Sansung Galaxy X: 1 unidad - 6000 CUP, a partir de 20 unidades - 4300 CUP</p>
+                    <input type="number" id="cantidad8" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Sansung Galaxy X', 6000, 4300, 'cantidad8')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="producto" id="producto9">
+                <img src="ip 7 1.jpg" alt="Producto 9">
+                <button onclick="toggleMenu('menu9')">Mostrar Tarifas</button>
+                <div id="menu9" class="menu">
+                    <p>Iphone 7: 1 unidad - 4000 CUP, a partir de 20 unidades - 3100 CUP</p>
+                    <input type="number" id="cantidad9" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Sansung Galaxy X', 4000, 3100, 'cantidad9')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="producto" id="producto10">
+                <img src="y9prime 1.webp" alt="Producto 10">
+                <button onclick="toggleMenu('menu10')">Mostrar Tarifas</button>
+                <div id="menu10" class="menu">
+                    <p>HUAWEI Y9 Prime: 1 unidad - 4000 CUP, a partir de 20 unidades - 2900 CUP</p>
+                    <input type="number" id="cantidad10" placeholder="Cantidad">
+                    <button onclick="agregarProducto('HUAWEI Y9 Prime', 4000, 2900, 'cantidad10')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="producto" id="producto11">
+                <img src="s3 mini 1.jpg" alt="Producto 11">
+                <button onclick="toggleMenu('menu11')">Mostrar Tarifas</button>
+                <div id="menu11" class="menu">
+                    <p>Sansung Galaxy S3 Mini: 1 unidad - 4000 CUP, a partir de 20 unidades - 2100 CUP</p>
+                    <input type="number" id="cantidad11" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Sansung Galaxy S3 Mini', 4000, 2100, 'cantidad11')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="producto" id="producto12">
+                <img src="j5 j2 1.jpg" alt="Producto 12">
+                <button onclick="toggleMenu('menu12')">Mostrar Tarifas</button>
+                <div id="menu12" class="menu">
+                    <p>Sansung Galaxy J5/J2 Prime: 1 unidad - 4000 CUP, a partir de 20 unidades - 2100 CUP</p>
+                    <input type="number" id="cantidad12" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Sansung Galaxy J5/J2 Prime', 4000, 2100, 'cantidad12')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="producto" id="producto13">
+                <img src="redmi 8 1.jpg" alt="Producto 13">
+                <button onclick="toggleMenu('menu13')">Mostrar Tarifas</button>
+                <div id="menu13" class="menu">
+                    <p>Xiaomi Redmi 8: 1 unidad - 6000 CUP, a partir de 20 unidades -3800 CUP</p>
+                    <input type="number" id="cantidad13" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Xiaomi Redmi 8', 6000, 3800, 'cantidad13')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="producto" id="producto14">
+                <img src="redmi 6 1.webp" alt="Producto 14">
+                <button onclick="toggleMenu('menu14')">Mostrar Tarifas</button>
+                <div id="menu14" class="menu">
+                    <p>Xiaomi Redmi 6: 1 unidad - 4000 CUP, a partir de 20 unidades -2800 CUP</p>
+                    <input type="number" id="cantidad14" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Xiaomi Redmi 6', 4000, 2800, 'cantidad14')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="producto" id="producto15">
+                <img src="s6 plus 1.webp" alt="Producto 15">
+                <button onclick="toggleMenu('menu15')">Mostrar Tarifas</button>
+                <div id="menu15" class="menu">
+                    <p>Sansung Galaxy S6+: 1 unidad - 4000 CUP, a partir de 20 unidades -3100 CUP</p>
+                    <input type="number" id="cantidad15" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Sansung Galaxy S6+', 4000, 3100, 'cantidad15')">Agregar</button>
+                </div>
+            </div>
+            
+            <div class="producto" id="producto16">
+                <img src="motog40 1.webp" alt="Producto 16">
+                <button onclick="toggleMenu('menu16')">Mostrar Tarifas</button>
+                <div id="menu16" class="menu">
+                    <p>Moto G40: 1 unidad - 4000 CUP, a partir de 20 unidades -2200 CUP</p>
+                    <input type="number" id="cantidad16" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Moto G40', 4000, 2200, 'cantidad16')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="producto" id="producto17">
+                <img src="motoe5play 1.jpg" alt="Producto 17">
+                <button onclick="toggleMenu('menu17')">Mostrar Tarifas</button>
+                <div id="menu17" class="menu">
+                    <p>Moto E5 Play: 1 unidad - 4000 CUP, a partir de 20 unidades -2000 CUP</p>
+                    <input type="number" id="cantidad17" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Moto E5 Play', 4000, 2000, 'cantidad17')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="producto" id="producto18">
+                <img src="a10 1.jpg" alt="Producto 18">
+                <button onclick="toggleMenu('menu18')">Mostrar Tarifas</button>
+                <div id="menu18" class="menu">
+                    <p>Sansung Galaxy A10: 1 unidad - 4000 CUP, a partir de 20 unidades -2800 CUP</p>
+                    <input type="number" id="cantidad18" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Sansung Galaxy A10', 4000, 2800, 'cantidad18')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="producto" id="producto19">
+                <img src="a12 1.jpg" alt="Producto 19">
+                <button onclick="toggleMenu('menu19')">Mostrar Tarifas</button>
+                <div id="menu19" class="menu">
+                    <p>Sansung Galaxy A12: 1 unidad - 4000 CUP, a partir de 20 unidades -3200 CUP</p>
+                    <input type="number" id="cantidad19" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Sansung Galaxy A12', 4000, 3200, 'cantidad19')">Agregar</button>
+                </div>
+            </div>
+
+            
+            <div class="producto" id="producto20">
+                <img src="a30 1.jpg" alt="Producto 20">
+                <button onclick="toggleMenu('menu20')">Mostrar Tarifas</button>
+                <div id="menu20" class="menu">
+                    <p>Sansung Galaxy A30: 1 unidad - 4000 CUP, a partir de 20 unidades -2900 CUP</p>
+                    <input type="number" id="cantidad20" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Sansung Galaxy A30', 4000, 2900, 'cantidad20')">Agregar</button>
+                </div>
+            </div>
+
+            
+            <div class="producto" id="producto21">
+                <img src="a20 1.jpg" alt="Producto 21">
+                <button onclick="toggleMenu('menu21')">Mostrar Tarifas</button>
+                <div id="menu21" class="menu">
+                    <p>Sansung Galaxy A20: 1 unidad - 4000 CUP, a partir de 20 unidades -2900 CUP</p>
+                    <input type="number" id="cantidad21" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Sansung Galaxy A20', 4000, 2900, 'cantidad21')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="producto" id="producto22">
+                <img src="ip 6 1.webp" alt="Producto 22">
+                <button onclick="toggleMenu('menu22')">Mostrar Tarifas</button>
+                <div id="menu22" class="menu">
+                    <p>Iphone 6: 1 unidad - 4000 CUP, a partir de 20 unidades -3100 CUP</p>
+                    <input type="number" id="cantidad22" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Iphone 6', 4000, 3100, 'cantidad22')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="producto" id="producto23">
+                <img src="s6 1.jpg" alt="Producto 23">
+                <button onclick="toggleMenu('menu23')">Mostrar Tarifas</button>
+                <div id="menu23" class="menu">
+                    <p>Sansung Galaxy S6: 1 unidad - 4000 CUP, a partir de 20 unidades -2850 CUP</p>
+                    <input type="number" id="cantidad23" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Sansung Galaxy S6', 4000, 2850, 'cantidad23')">Agregar</button>
+                </div>
+            </div>
+
+            <div class="producto" id="producto24">
+                <img src="S4 1.jpg" alt="Producto 24">
+                <button onclick="toggleMenu('menu24')">Mostrar Tarifas</button>
+                <div id="menu24" class="menu">
+                    <p>Sansung Galaxy S4: 1 unidad - 4000 CUP, a partir de 20 unidades -2100 CUP</p>
+                    <input type="number" id="cantidad24" placeholder="Cantidad">
+                    <button onclick="agregarProducto('Sansung Galaxy S4', 4000, 2100, 'cantidad24')">Agregar</button>
+                </div>
+            </div>
+
+            
+
+
+
+            <!-- Repetir hasta el producto 25 -->
+        </div>
+
+        <!-- Tabla de productos seleccionados -->
+        <table id="tabla-productos">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <button id="calcular" onclick="calcularTotal()">Calcular Total</button>
+        <div id="total"></div>
+
+        <button id="solicitar" onclick="solicitarProductos()">Solicitar</button>
+    </main>
+
+    <script src="bateria-scrypt.js"></script>
+</body>
+</html>

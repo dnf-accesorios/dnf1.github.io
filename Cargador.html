@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Productos</title>
+    <link rel="stylesheet" href="styles cargadores.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <header>
+        <nav class="navbar">
+            <div class="logo"><img src="logo.png" alt="logo img"></div>
+            <ul class="nav-links">
+                <li class="nav-item"><a href="index.html">Home</a>
+                    <ul class="submenu">
+                        <li><a href="mica.html">Mica</a></li>
+                        <li><a href="cover.html">Cover</a></li>
+                        <li><a href="telefono.html">Telefono</a></li>
+                        <li><a href="bateria.html">Batería</a></li>
+                        <li><a href="audifono.html">Audífono</a></li>
+                        <li><a href="otros.html">Otros...</a></li>
+                    </ul>
+                </li>
+            </li>
+            <li class="nav-item"><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <!-- Contenido principal con imagen de fondo -->
+    <div class="cover-image">
+        <div class="content">
+            <h2>Modelos</h2>
+            <div class="product-gallery">
+                <!-- Recuadros de productos con transiciones de imagen y tarifas -->
+                <!-- Producto 1 -->
+                <div class="product-card">
+                    <div class="slider">
+                        <img src="ctipoc2.3-1.jpg" alt="Producto 1 - Imagen 1">
+                        <img src="ctipoc2.3-2.jpg" alt="Producto 1 - Imagen 2">
+                        <img src="ctipoc2.3-3.jpg" alt="Producto 1 - Imagen 3">
+                    </div>
+                    <div class="product-name">Cargador de cable tipo C ( CARGA RAPIDA 2.4 12 W )</div>
+                    <button onclick="toggleTariff('tariff1')">Ver tarifas</button>
+                    <ul id="tariff1" class="tariff-list">
+                        <li>1 unidad: 1400 CUP</li>
+                        <li>A partir de 100 unidades: 1350</li>
+                    </ul>
+                    <input type="number" id="cantidad1" placeholder="Cantidad">
+                    <button onclick="addToTable('Cargador de cable tipo C', 'cantidad1', 1400, 1350)">Agregar</button>
+                </div>
+
+ <!-- Producto 4 -->
+                <div class="product-card">
+                    <div class="slider">
+                        <img src="ctipoc2.0-1.jpg" alt="Producto 1 - Imagen 1">
+                        <img src="ctipoc2.0-2.webp" alt="Producto 1 - Imagen 2">
+                        <img src="ctipoc2.0-3.jpg" alt="Producto 1 - Imagen 3">
+                    </div>
+                    <div class="product-name">Cargador de cable tipo C </div>
+                    <button onclick="toggleTariff('tariff4')">Ver tarifas</button>
+                    <ul id="tariff4" class="tariff-list">
+                        <li>1 unidad: 1300 CUP</li>
+                        <li>A partir de 100 unidades: 1250</li>
+                    </ul>
+                    <input type="number" id="cantidad4" placeholder="Cantidad">
+                    <button onclick="addToTable('Cargador de cable tipo C 2.0', 'cantidad4', 1250, 1300)">Agregar</button>
+                </div>
+
+                
+                
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <div class="slider">
+                        <img src="v8 1.jfif" alt="Producto 2 - Imagen 1">
+                        <img src="v8 2.jfif" alt="Producto 2 - Imagen 2">
+                        <img src="v8 3.webp" alt="Producto 2 - Imagen 3">
+                    </div>
+                    <div class="product-name">Cargador de cable tipo V8</div>
+                    <button onclick="toggleTariff('tariff2')">Ver tarifas</button>
+                    <ul id="tariff2" class="tariff-list">
+                        <li>1 unidad: 600 CUP</li>
+                        <li>A partir de 5 unidades: 300 CUP</li>
+                    </ul>
+                    <input type="number" id="cantidad2" placeholder="Cantidad">
+                    <button onclick="addToTable('Cargador de cable tipo V8', 'cantidad2', 600, 300)">Agregar</button>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="product-card">
+                    <div class="slider">
+                        <img src="iphone 1.jpg" alt="Producto 3 - Imagen 1">
+                        <img src="iphone 2.jpg" alt="Producto 3 - Imagen 2">
+                        <img src="iphone 3.jpg" alt="Producto 3 - Imagen 3">
+                    </div>
+                    <div class="product-name">Cargador de cable tipo C a Lightning (Iphone)</div>
+                    <button onclick="toggleTariff('tariff3')">Ver tarifas</button>
+                    <ul id="tariff3" class="tariff-list">
+                        <li>1 unidad: 600 CUP</li>
+                        <li>A partir de 5 unidades: 300 CUP</li>
+                    </ul>
+                    <input type="number" id="cantidad3" placeholder="Cantidad">
+                    <button onclick="addToTable('Cargador de cable tipo C a Lightning (Iphone)', 'cantidad3', 600, 300)">Agregar</button>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="product-card">
+                    <div class="slider">
+                        <img src="ctipov8c-1.avif" alt="Producto 3 - Imagen 1">
+                        <img src="ctipov8c-2.jpg" alt="Producto 3 - Imagen 2">
+                        <img src="ctipov8c.3.webp" alt="Producto 3 - Imagen 3">
+                    </div>
+                    <div class="product-name">Cable de Carga tipo V8</div>
+                    <button onclick="toggleTariff('tariff5')">Ver tarifas</button>
+                    <ul id="tariff5" class="tariff-list">
+                        <li>1 unidad: 800 CUP</li>
+                        <li>A partir de 100 unidades: 380 CUP</li>
+                    </ul>
+                    <input type="number" id="cantidad5" placeholder="Cantidad">
+                    <button onclick="addToTable('Cable de carga tipo V8', 'cantidad5', 800, 380)">Agregar</button>
+                </div>
+
+              
+            <!-- Tabla de productos agregados -->
+            <div class="product-table">
+                <table id="product-table">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Productos agregados se mostrarán aquí -->
+                    </tbody>
+                </table>
+                <button onclick="calculateTotal()">Calcular</button>
+                <div id="total-price"></div>
+                <button id="solicitar-btn" onclick="sendWhatsApp()" disabled>Solicitar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="cargadore-scryp.js"></script>
+</body>
+</html>
