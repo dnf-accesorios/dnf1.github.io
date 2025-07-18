@@ -1,0 +1,34 @@
+/* Animaciones para el fondo de pantalla (si se usa un slideshow de fondo) */
+@keyframes slideAnimation {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    20% { opacity: 1; }
+    30% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* Las animaciones de slideAnimation se aplican en línea en el HTML con animate-[...] */
+
+/* Animaciones para las imágenes de los productos (carrusel dentro de las tarjetas) */
+.product-card .image-slider .slider-img {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Suaviza la transición entre imágenes */
+}
+
+/* Estilos para el menú móvil (controlado por JS) */
+.nav-links-mobile.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-links-mobile.visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Estilos para la tabla de productos */
+#productTable th, #productTable td {
+    border-bottom: 1px solid #e2e8f0; /* border-gray-200 */
+}
