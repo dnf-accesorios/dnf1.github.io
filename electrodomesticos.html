@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda - Electrodomésticos</title>
+    <!-- Tailwind CSS para un diseño rápido y responsive -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Iconos (Feather Icons) -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        /* Estilo personalizado para la fuente y el scroll suave */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Estilo para la barra de desplazamiento */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        /* Clases para la animación del carrito */
+        .cart-enter {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        .cart-enter-active {
+            opacity: 1;
+            transform: scale(1);
+            transition: opacity 300ms, transform 300ms;
+        }
+        .cart-leave {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .cart-leave-active {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 300ms, transform 300ms;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-500 to-blue-800 min-h-screen text-gray-800">
+
+    <!-- BARRA DE NAVEGACIÓN FIJA -->
+    <header class="bg-white/80 backdrop-blur-lg shadow-md fixed top-0 left-0 right-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#" class="flex items-center space-x-2">
+                        <img class="h-10 w-auto" src="logo.png" alt="Logo de la marca">
+                        <span class="font-bold text-xl text-gray-700 hidden sm:block"></span>
+                    </a>
+                </div>
+
+                <!-- Menú de Navegación -->
+                <div class="flex items-center space-x-4">
+                    <!-- Menú desplegable -->
+                    <div class="relative" id="menu-container">
+                        <button id="menu-button" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 flex items-center">
+                            Menu
+                            <i data-feather="chevron-down" class="ml-2 h-4 w-4"></i>
+                        </button>
+                        <div id="dropdown-menu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20">
+                            <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Inico</a>
+                            <a href="cover.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cover</a>
+                            <a href="mica.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Micas</a>
+                            <a href="telefono.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Teléfonos</a>
+                            <a href="audifono.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Audífonos</a>
+                            <a href="bateria.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Baterías</a>
+                            <a href="Cargador.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cargadores</a>
+                            <a href="otros.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Otros Accesorios</a>
+                        </div>
+                    </div>
+
+                    <!-- Botón del Carrito -->
+                    <button id="cart-button" class="relative p-2 rounded-full hover:bg-gray-200 transition duration-300">
+                        <i data-feather="shopping-cart" class="text-gray-700"></i>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="pt-24 pb-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-bold text-white text-center mb-8">Nuestros Electrodomésticos</h1>
+            
+            <!-- Cuadrícula de Productos -->
+            <!-- IMPORTANTE: Ahora solo necesitas cambiar la ruta en 'src'. Ejemplo: src="tu_carpeta/tu_imagen.jpg" -->
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                
+                <!-- Producto 1 -->
+                <div class="bg-white/90 rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                    <img src="licuadora-y-molino-2-en-1-milexus.jpg" alt="Batidora Milexus" class="w-full h-56 object-cover">
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Batidora Milexus</h3>
+                        <div class="text-gray-600 mb-4 mt-auto">
+                            <p><span class="font-semibold">Por unidad:</span> $25.00</p>
+                            <p><span class="font-semibold">Por cantidad (+5):</span> $30.00</p>
+                        </div>
+                        <button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 flex items-center justify-center"
+                            data-id="1" data-name="Batidora Milexus" data-image="licuadora-y-molino-2-en-1-milexus" data-price-unit="30.00" data-price-quantity="25.00">
+                            <i data-feather="plus" class="mr-2 h-5 w-5"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="bg-white/90 rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                    <img src="bocina.jpg" alt="Bocina Portatil Grande" class="w-full h-56 object-cover">
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Bocina Portatil Grande</h3>
+                        <div class="text-gray-600 mb-4 mt-auto">
+                            <p><span class="font-semibold">Por unidad:</span> $70.00</p>
+                            <p><span class="font-semibold">Por cantidad (+5):</span> $60.00</p>
+                        </div>
+                        <button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 flex items-center justify-center"
+                            data-id="2" data-name="Bocina Portatil Grande" data-image="bocina" data-price-unit="70.00" data-price-quantity="60.00">
+                            <i data-feather="plus" class="mr-2 h-5 w-5"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="bg-white/90 rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                    <img src="bocina.jpg" alt="Bocina Portatil Pequeña" class="w-full h-56 object-cover">
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Bocina Portatil Pequeña</h3>
+                        <div class="text-gray-600 mb-4 mt-auto">
+                            <p><span class="font-semibold">Por unidad:</span> $70.00</p>
+                            <p><span class="font-semibold">Por cantidad (+5):</span> $60.00</p>
+                        </div>
+                        <button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 flex items-center justify-center"
+                            data-id="3" data-name="Bocina Portatil Pequeña" data-image="bocina" data-price-unit="70.00" data-price-quantity="60.00">
+                            <i data-feather="plus" class="mr-2 h-5 w-5"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="bg-white/90 rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                    <img src="airfrayer.webp" alt="Airfrayer" class="w-full h-56 object-cover">
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Airfrayer</h3>
+                        <div class="text-gray-600 mb-4 mt-auto">
+                            <p><span class="font-semibold">Por unidad:</span> $80.00</p>
+                            <p><span class="font-semibold">Por cantidad (+5):</span> $70.00</p>
+                        </div>
+                        <button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 flex items-center justify-center"
+                            data-id="4" data-name="Airfrayer" data-image="airfrayer.jpg" data-price-unit="80.00" data-price-quantity="70.00">
+                            <i data-feather="plus" class="mr-2 h-5 w-5"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="bg-white/90 rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                    <img src="olla arrocera.jpg" alt="Olla Arrocera" class="w-full h-56 object-cover">
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Olla Arrocera</h3>
+                        <div class="text-gray-600 mb-4 mt-auto">
+                            <p><span class="font-semibold">Por unidad:</span> $30.00</p>
+                            <p><span class="font-semibold">Por cantidad (+5):</span> $25.00</p>
+                        </div>
+                        <button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 flex items-center justify-center"
+                            data-id="5" data-name="Olla Arrocera" data-image="olla arrocera.jpg" data-price-unit="30.00" data-price-quantity="25.00">
+                            <i data-feather="plus" class="mr-2 h-5 w-5"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 6 -->
+                <div class="bg-white/90 rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                    <img src="ecoflow.webp" alt="Ecoflowrico" class="w-full h-56 object-cover">
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Ecoflow</h3>
+                        <div class="text-gray-600 mb-4 mt-auto">
+                            <p><span class="font-semibold">Por unidad:</span> $900.00</p>
+                            <p><span class="font-semibold">Por cantidad (+5):</span> $900.00</p>
+                        </div>
+                        <button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 flex items-center justify-center"
+                            data-id="6" data-name="Ecoflow" data-image="ecoflow" data-price-unit="900.00" data-price-quantity="900.00">
+                            <i data-feather="plus" class="mr-2 h-5 w-5"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 7 -->
+                <div class="bg-white/90 rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                    <img src="powerband.webp" alt="Powerband" class="w-full h-56 object-cover">
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Powerband</h3>
+                        <div class="text-gray-600 mb-4 mt-auto">
+                            <p><span class="font-semibold">Por unidad:</span> $25.00</p>
+                            <p><span class="font-semibold">Por cantidad (+5):</span> $20.00</p>
+                        </div>
+                        <button class="add-to-cart-btn mt-4 w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 flex items-center justify-center"
+                            data-id="7" data-name="Powerband" data-image="powerband.jpg" data-price-unit="25.00" data-price-quantity="20.00">
+                            <i data-feather="plus" class="mr-2 h-5 w-5"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+
+               
+
+            </div>
+        </div>
+    </main>
+
+    <!-- MODAL DEL CARRITO DE COMPRAS -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4 hidden">
+        <div id="cart-content" class="bg-white w-full max-w-2xl rounded-xl shadow-2xl flex flex-col cart-enter">
+            <!-- Cabecera del carrito -->
+            <div class="flex justify-between items-center p-4 border-b">
+                <h2 class="text-2xl font-bold">Tu Carrito</h2>
+                <button id="close-cart-button" class="p-2 rounded-full hover:bg-gray-200">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+
+            <!-- Contenido del carrito -->
+            <div class="p-6 overflow-y-auto max-h-[60vh]">
+                <div id="cart-items-container" class="space-y-4">
+                    <!-- Los items del carrito se insertarán aquí -->
+                    <p id="empty-cart-message" class="text-gray-500 text-center">Tu carrito está vacío.</p>
+                </div>
+            </div>
+
+            <!-- Pie del carrito -->
+            <div class="p-4 border-t mt-auto bg-gray-50 rounded-b-xl">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-lg font-semibold">Total:</span>
+                    <span id="cart-total" class="text-2xl font-bold text-blue-600">$0.00 USD</span>
+                </div>
+                <button id="whatsapp-button" class="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition duration-300 flex items-center justify-center space-x-2 disabled:bg-gray-400 disabled:cursor-not-allowed">
+                    <i data-feather="message-circle"></i>
+                    <span>Solicitar por WhatsApp</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- ESTADO DEL CARRITO ---
+            let cart = [];
+
+            // --- REFERENCIAS A ELEMENTOS DEL DOM ---
+            const productGrid = document.getElementById('product-grid');
+            const cartButton = document.getElementById('cart-button');
+            const cartModal = document.getElementById('cart-modal');
+            const cartContent = document.getElementById('cart-content');
+            const closeCartButton = document.getElementById('close-cart-button');
+            const cartItemsContainer = document.getElementById('cart-items-container');
+            const cartTotal = document.getElementById('cart-total');
+            const cartCount = document.getElementById('cart-count');
+            const emptyCartMessage = document.getElementById('empty-cart-message');
+            const whatsappButton = document.getElementById('whatsapp-button');
+            const menuButton = document.getElementById('menu-button');
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            const menuContainer = document.getElementById('menu-container');
+
+            // --- LÓGICA DEL CARRITO ---
+            function addToCart(productData) {
+                const cartItem = cart.find(item => item.id === productData.id);
+
+                if (cartItem) {
+                    cartItem.quantity++;
+                } else {
+                    cart.push({ ...productData, quantity: 1 });
+                }
+                updateCart();
+            }
+            
+            function updateCartQuantity(productId, newQuantity) {
+                const cartItem = cart.find(item => item.id === productId);
+                if (cartItem) {
+                    if (newQuantity > 0) {
+                        cartItem.quantity = newQuantity;
+                    } else {
+                        // Eliminar si la cantidad es 0 o menos
+                        cart = cart.filter(item => item.id !== productId);
+                    }
+                }
+                updateCart();
+            }
+
+            function updateCart() {
+                cartItemsContainer.innerHTML = '';
+                let total = 0;
+                let totalItems = 0;
+
+                if (cart.length === 0) {
+                    cartItemsContainer.appendChild(emptyCartMessage);
+                    emptyCartMessage.style.display = 'block';
+                    whatsappButton.disabled = true;
+                } else {
+                    emptyCartMessage.style.display = 'none';
+                    whatsappButton.disabled = false;
+                    
+                    cart.forEach(item => {
+                        const price = item.quantity >= 5 ? item.priceQuantity : item.priceUnit;
+                        const itemTotal = price * item.quantity;
+                        total += itemTotal;
+                        totalItems += item.quantity;
+
+                        const cartItemElement = document.createElement('div');
+                        cartItemElement.className = 'flex items-center justify-between border-b pb-2';
+                        cartItemElement.innerHTML = `
+                            <div class="flex items-center space-x-3">
+                                <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-md">
+                                <div>
+                                    <p class="font-semibold">${item.name}</p>
+                                    <p class="text-sm text-gray-500">$${price.toFixed(2)} c/u</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <input type="number" min="1" value="${item.quantity}" data-id="${item.id}" class="quantity-input w-16 text-center border rounded-md p-1">
+                                <p class="font-bold w-24 text-right">$${itemTotal.toFixed(2)}</p>
+                            </div>
+                        `;
+                        cartItemsContainer.appendChild(cartItemElement);
+                    });
+                }
+
+                cartTotal.textContent = `$${total.toFixed(2)} USD`;
+                
+                if (totalItems > 0) {
+                    cartCount.textContent = totalItems;
+                    cartCount.classList.remove('hidden');
+                } else {
+                    cartCount.classList.add('hidden');
+                }
+            }
+            
+            // --- MANEJO DE EVENTOS ---
+            productGrid.addEventListener('click', (e) => {
+                const button = e.target.closest('.add-to-cart-btn');
+                if (button) {
+                    // Extraer datos del producto desde los atributos data-* del botón
+                    const productData = {
+                        id: parseInt(button.dataset.id),
+                        name: button.dataset.name,
+                        image: button.dataset.image,
+                        priceUnit: parseFloat(button.dataset.priceUnit),
+                        priceQuantity: parseFloat(button.dataset.priceQuantity),
+                    };
+                    addToCart(productData);
+                }
+            });
+            
+            cartItemsContainer.addEventListener('change', (e) => {
+                if(e.target.classList.contains('quantity-input')) {
+                    const productId = parseInt(e.target.dataset.id);
+                    const newQuantity = parseInt(e.target.value);
+                    updateCartQuantity(productId, newQuantity);
+                }
+            });
+
+            // Abrir y cerrar el carrito
+            const openCart = () => {
+                cartModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Evitar scroll de fondo
+                cartContent.classList.add('cart-enter-active');
+                cartContent.classList.remove('cart-leave-active', 'cart-enter');
+            };
+
+            const closeCart = () => {
+                cartContent.classList.add('cart-leave-active');
+                cartContent.classList.remove('cart-enter-active');
+                setTimeout(() => {
+                    cartModal.classList.add('hidden');
+                    document.body.style.overflow = ''; // Restaurar scroll
+                }, 300);
+            };
+
+            cartButton.addEventListener('click', openCart);
+            closeCartButton.addEventListener('click', closeCart);
+            cartModal.addEventListener('click', (e) => {
+                if (e.target === cartModal) {
+                    closeCart();
+                }
+            });
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !cartModal.classList.contains('hidden')) {
+                    closeCart();
+                }
+            });
+
+            // Menú desplegable
+            menuButton.addEventListener('click', () => {
+                dropdownMenu.classList.toggle('hidden');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!menuContainer.contains(e.target)) {
+                    dropdownMenu.classList.add('hidden');
+                }
+            });
+            
+            // Botón de WhatsApp
+            whatsappButton.addEventListener('click', () => {
+                if (cart.length === 0) return;
+
+                const phoneNumber = '5359752791';
+                let message = '¡Hola! Quisiera solicitar los siguientes productos:\n\n';
+                let total = 0;
+
+                cart.forEach(item => {
+                    const price = item.quantity >= 5 ? item.priceQuantity : item.priceUnit;
+                    const itemTotal = price * item.quantity;
+                    total += itemTotal;
+                    message += `- ${item.quantity} x ${item.name}: $${itemTotal.toFixed(2)}\n`;
+                });
+
+                message += `\n*Total: $${total.toFixed(2)} USD*`;
+
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+            });
+
+            // --- INICIALIZACIÓN ---
+            updateCart();
+            feather.replace();
+        });
+    </script>
+</body>
+</html>

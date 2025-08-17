@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Inicio - Tienda</title>
+    <!-- Incluye Tailwind CSS para un diseño responsive y sencillo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Usa la fuente Inter para un diseño moderno y legible -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: url(fondo\ index.jpg);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* Capa oscura para oscurecer la imagen */
+            z-index: -1;
+        }
+
+        /* Clase para ocultar la barra de desplazamiento en navegadores WebKit (Chrome, Safari, etc.) */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Ocultar la barra de desplazamiento para Firefox */
+        .hide-scrollbar {
+            -ms-overflow-style: none;  /* Estilo para IE y Edge */
+            scrollbar-width: none;  /* Estilo para Firefox */
+        }
+    </style>
+</head>
+<body class="bg-blue-100">
+
+    <!-- Barra de Navegación -->
+    <header class="bg-blue-200 shadow-md">
+        <nav class="container mx-auto p-4 flex justify-between items-center">
+            <!-- Logo de la marca -->
+            <a href="#" class="flex items-center space-x-2">
+                <img src="logo.png" alt="Logo de la marca" class="h-10 rounded">
+            </a>
+            
+            <!-- Botón para ir a la página de contacto -->
+            <a href="contacto.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">
+                Contacto
+            </a>
+        </nav>
+    </header>
+
+    <!-- Sección de fotos de extremo a extremo con navegación -->
+    <section class="relative w-full mt-4 shadow-md">
+        <!-- Botón de navegación izquierda -->
+        <button id="scroll-left" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/70 p-2 rounded-full shadow-lg hover:bg-white transition-colors duration-200 z-10 hidden sm:block">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+
+        <!-- Contenedor para las imágenes con scroll horizontal y barra oculta -->
+        <div id="image-carousel" class="flex overflow-x-auto hide-scrollbar snap-x snap-mandatory">
+            <img src="fondo covers.jpg" alt="Foto descriptiva de la tienda" class="snap-center h-48 md:h-64 w-full object-cover inline-block flex-shrink-0">
+            
+        </div>
+        
+        <!-- Botón de navegación derecha -->
+        <button id="scroll-right" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/70 p-2 rounded-full shadow-lg hover:bg-white transition-colors duration-200 z-10 hidden sm:block">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+    </section>
+
+    <!-- Sección de categorías con 7 cuadros -->
+    <section class="container mx-auto p-4 md:p-8 mt-8">
+        <h2 class="text-3xl font-bold text-center mb-6 text-white">Nuestras Categorías</h2>
+        <!-- Grid para los cuadros de las categorías, se adapta según el tamaño de la pantalla -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Cuadro 1 -->
+            <a href="cover.html" class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
+                <img src="cover1.jpg" alt="Imagen de la Sección 1" class="w-full h-48 object-cover rounded-t-xl">
+                <div class="p-4 text-center">
+                    <p class="font-semibold text-lg text-gray-700">Cover</p>
+                </div>
+            </a>
+            <!-- Cuadro 2 -->
+            <a href="mica.html" class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
+                <img src="mica1.jpg" alt="Imagen de la Sección 2" class="w-full h-48 object-cover rounded-t-xl">
+                <div class="p-4 text-center">
+                    <p class="font-semibold text-lg text-gray-700">Micas</p>
+                </div>
+            </a>
+            <!-- Cuadro 3 -->
+            <a href="telefono.html" class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
+                <img src="telefono1.jpg" alt="Imagen de la Sección 3" class="w-full h-48 object-cover rounded-t-xl">
+                <div class="p-4 text-center">
+                    <p class="font-semibold text-lg text-gray-700">Telefonos</p>
+                </div>
+            </a>
+            <!-- Cuadro 4 -->
+            <a href="audifono.html" class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
+                <img src="audifono1.jpg" alt="Imagen de la Sección 4" class="w-full h-48 object-cover rounded-t-xl">
+                <div class="p-4 text-center">
+                    <p class="font-semibold text-lg text-gray-700">Audifono</p>
+                </div>
+            </a>
+            <!-- Cuadro 5 -->
+            <a href="Cargador.html" class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
+                <img src="cargador1.jpg" alt="Imagen de la Sección 5" class="w-full h-48 object-cover rounded-t-xl">
+                <div class="p-4 text-center">
+                    <p class="font-semibold text-lg text-gray-700">Cargadores</p>
+                </div>
+            </a>
+            <!-- Cuadro 6 -->
+            <a href="bateria.html" class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
+                <img src="bateria1.jpg" alt="Imagen de la Sección 6" class="w-full h-48 object-cover rounded-t-xl">
+                <div class="p-4 text-center">
+                    <p class="font-semibold text-lg text-gray-700">Bateria</p>
+                </div>
+            </a>
+            <!-- Cuadro 7 -->
+            <a href="otros.html" class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
+                <img src="oa3.jpg" alt="Imagen de la Sección 7" class="w-full h-48 object-cover rounded-t-xl">
+                <div class="p-4 text-center">
+                    <p class="font-semibold text-lg text-gray-700">Otros Accesorios</p>
+                </div>
+            </a>
+
+             <!-- Cuadro 8 -->
+            <a href="electrodomesticos.html" class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
+                <img src="electrodomesticos banner.jpg" alt="Imagen de la Sección 7" class="w-full h-48 object-cover rounded-t-xl">
+                <div class="p-4 text-center">
+                    <p class="font-semibold text-lg text-gray-700">Electrodomesticos</p>
+                </div>
+            </a>
+        </div>
+
+    
+    </section>
+
+    <script>
+        // Obtener los elementos del carrusel y los botones de navegación
+        const carousel = document.getElementById('image-carousel');
+        const scrollLeftBtn = document.getElementById('scroll-left');
+        const scrollRightBtn = document.getElementById('scroll-right');
+
+        // Función para el desplazamiento
+        const scrollCarousel = (direction) => {
+            const scrollAmount = carousel.offsetWidth; // Desplazarse por el ancho de la ventana visible
+            if (direction === 'right') {
+                carousel.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            } else {
+                carousel.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        };
+
+        // Escuchar los clics en los botones de navegación
+        scrollLeftBtn.addEventListener('click', () => scrollCarousel('left'));
+        scrollRightBtn.addEventListener('click', () => scrollCarousel('right'));
+    </script>
+</body>
+</html>
