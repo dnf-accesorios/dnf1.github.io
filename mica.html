@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accesorios para Teléfonos (Corregido)</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome (para iconos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Tu CSS Personalizado --- */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 50;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .price-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 50;
+            border-radius: 0.5rem;
+            padding: 10px;
+            margin-top: 5px;
+        }
+        .price-dropdown:hover .price-dropdown-content {
+            display: block;
+        }
+
+        /* --- Estilos del Modal del Carrito --- */
+        .cart-modal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5); /* Fondo oscuro semitransparente */
+            justify-content: center;
+            align-items: center;
+        }
+        .cart-modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+        }
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4 px-6 sticky top-0 z-50">
+        <nav class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold text-blue-600">
+                <a href="#">DNF</a>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a>
+                <a href="cover.html" class="text-gray-700 hover:text-blue-600">Cover</a>
+                <a href="telefono.html" class="text-gray-700 hover:text-blue-600">Teléfonos</a>
+                <a href="bateria.html" class="text-gray-700 hover:text-blue-600">Baterías</a>
+                <a href="electrodomesticos.html" class="text-gray-700 hover:text-blue-600">Electrodomesticos</a>
+                <a href="otros.html" class="text-gray-700 hover:text-blue-600">Otros Accesorios</a>
+            </div>
+            <button id="cart-icon" class="relative text-gray-700 hover:text-blue-600 focus:outline-none">
+                <i class="fas fa-shopping-cart text-2xl"></i>
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <!-- Banner -->
+        <section class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-16 text-center shadow-lg">
+            <div class="container mx-auto px-4">
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4">¡NUEVAS OFERTAS DISPONIBLES!</h1>
+            </div>
+        </section>
+
+        <!-- Search and Filters -->
+        <section class="py-8 bg-gray-100 sticky top-[72px] z-40 shadow-sm">
+            <div class="container mx-auto px-4">
+                <div class="relative w-full max-w-xl mx-auto mb-6">
+                    <input type="text" id="search-input" placeholder="Buscar productos (ej: Xiaomi, A14, mica)..." class="w-full p-4 pl-12 pr-4 rounded-full border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm">
+                    <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                </div>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button data-filter="all" class="filter-btn bg-gray-700 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-800 transition duration-300">Todos</button>
+                    <button data-filter="mica-cristal" class="filter-btn bg-blue-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-600 transition duration-300">Micas de Cristal</button>
+                    <button data-filter="mica-espia" class="filter-btn bg-purple-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-purple-600 transition duration-300">Mica Anti-espia</button>
+                    <button data-filter="mica-tortuga" class="filter-btn bg-green-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-600 transition duration-300">Mica Tortuga</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product List -->
+        <section id="product-list" class="py-12 px-4">
+            <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8" id="products-grid">
+                
+                <!-- Producto 1: Mica de Cristal -->
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="1" data-product-name="Xiaomi Redmi 9A" data-product-type="mica-cristal" data-product-price="0.48">
+                    <img src="mica 6.5 1.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Xiaomi Redmi 9A</h3>
+                        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+                        <div class="flex items-center mb-4">
+                            <label for="qty-1" class="mr-2 text-gray-700">Cantidad:</label>
+                            <input type="number" id="qty-1" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+                    </div>
+                </div>
+
+                  <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="2" data-product-name="Samsung Galaxy A04" data-product-type="mica-cristal" data-product-price="0.48">
+                    <img src="mica 6.5 3.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A04</h3>
+                        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+                        <div class="flex items-center mb-4">
+                            <label for="qty-2" class="mr-2 text-gray-700">Cantidad:</label>
+                            <input type="number" id="qty-1" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+                    </div>
+                </div>
+
+
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="3" data-product-name="Samsung Galaxy A05" data-product-type="mica-cristal" data-product-price="0.48">
+                    <img src="mica 6.5 3.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A05</h3>
+                        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+                        <div class="flex items-center mb-4">
+                            <label for="qty-3" class="mr-2 text-gray-700">Cantidad:</label>
+                            <input type="number" id="qty-1" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="3" data-product-name="Samsung Galaxy A11" data-product-type="mica-cristal" data-product-price="0.48">
+                    <img src="mica 6.5 5jpg.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A11</h3>
+                        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+                        <div class="flex items-center mb-4">
+                            <label for="qty-3" class="mr-2 text-gray-700">Cantidad:</label>
+                            <input type="number" id="qty-1" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="4" data-product-name="Samsung Galaxy A12" data-product-type="mica-cristal" data-product-price="0.48">
+                    <img src="mica 6.5 3.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A12</h3>
+                        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+                        <div class="flex items-center mb-4">
+                            <label for="qty-4" class="mr-2 text-gray-700">Cantidad:</label>
+                            <input type="number" id="qty-1" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="6" data-product-name="Samsung Galaxy A15" data-product-type="mica-cristal" data-product-price="0.48">
+                    <img src="mica 6.5 3.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A15</h3>
+                        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+                        <div class="flex items-center mb-4">
+                            <label for="qty-6" class="mr-2 text-gray-700">Cantidad:</label>
+                            <input type="number" id="qty-1" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+                    </div>
+                </div>
+
+                 <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="5" data-product-name="Samsung Galaxy A14" data-product-type="mica-cristal" data-product-price="0.48">
+                    <img src="mica 6.5 3.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A14</h3>
+                        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+                        <div class="flex items-center mb-4">
+                            <label for="qty-5" class="mr-2 text-gray-700">Cantidad:</label>
+                            <input type="number" id="qty-1" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+                    </div>
+                </div>
+
+                 <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="6" data-product-name="Samsung Galaxy A21S" data-product-type="mica-cristal" data-product-price="0.48">
+                    <img src="mica 6.5 3.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A21S</h3>
+                        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+                        <div class="flex items-center mb-4">
+                            <label for="qty-6" class="mr-2 text-gray-700">Cantidad:</label>
+                            <input type="number" id="qty-1" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+                    </div>
+                </div>
+
+                 <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="7" data-product-name="Samsung Galaxy A24" data-product-type="mica-cristal" data-product-price="0.48">
+                    <img src="mica 6.6 2.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A24</h3>
+                        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+                        <div class="flex items-center mb-4">
+                            <label for="qty-7" class="mr-2 text-gray-700">Cantidad:</label>
+                            <input type="number" id="qty-1" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+                    </div>
+                </div>
+
+                 <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="8" data-product-name="Samsung Galaxy A30" data-product-type="mica-cristal" data-product-price="0.48">
+                    <img src="mica 6.5 3.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A30</h3>
+                        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+                        <div class="flex items-center mb-4">
+                            <label for="qty-8" class="mr-2 text-gray-700">Cantidad:</label>
+                            <input type="number" id="qty-1" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+                    </div>
+                </div>
+
+                 <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="9" data-product-name="Samsung Galaxy A70" data-product-type="mica-cristal" data-product-price="0.48">
+                    <img src="mica 6.5 3.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A70 </h3>
+                        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+                        <div class="flex items-center mb-4">
+                            <label for="qty-9" class="mr-2 text-gray-700">Cantidad:</label>
+                            <input type="number" id="qty-1" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Xiaomi Redmi Note 11 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="10" data-product-name="Xiaomi Redmi Note 11" data-product-type="mica-cristal" data-product-price="0.48">
+    <img src="mica 6.53 2.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Xiaomi Redmi Note 11</h3>
+        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-10" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-10" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Xiaomi Redmi 13C -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="11" data-product-name="Xiaomi Redmi 13C" data-product-type="mica-cristal" data-product-price="0.48">
+    <img src="mica 6.53 2.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Xiaomi Redmi 13C</h3>
+        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-11" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-11" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A03 Core -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="12" data-product-name="Samsung Galaxy A03 Core" data-product-type="mica-cristal" data-product-price="0.48">
+    <img src="mica 6.53 3.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A03 Core</h3>
+        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-12" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-12" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A03s -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="13" data-product-name="Samsung Galaxy A03s" data-product-type="mica-cristal" data-product-price="0.48">
+    <img src="mica 6.56 1.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A03s</h3>
+        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-13" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-13" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A04s -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="14" data-product-name="Samsung Galaxy A04s" data-product-type="mica-cristal" data-product-price="0.48">
+    <img src="mica 6.53 3.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A04s</h3>
+        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-14" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-14" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A05s -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="15" data-product-name="Samsung Galaxy A05s" data-product-type="mica-cristal" data-product-price="0.48">
+    <img src="mica 6.56 1.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A05s</h3>
+        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-15" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-15" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A11 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="16" data-product-name="Samsung Galaxy A11" data-product-type="mica-cristal" data-product-price="0.48">
+    <img src="mica 6.5 5jpg.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A11</h3>
+        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-16" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-16" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A12 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="17" data-product-name="Samsung Galaxy A12" data-product-type="mica-cristal" data-product-price="0.48">
+    <img src="mica 6.53 2.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A12</h3>
+        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-17" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-17" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A13 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="18" data-product-name="Samsung Galaxy A13" data-product-type="mica-cristal" data-product-price="0.48">
+    <img src="mica 6.53 2.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A13</h3>
+        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-18" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-18" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A15 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="19" data-product-name="Samsung Galaxy A15" data-product-type="mica-cristal" data-product-price="0.48">
+    <img src="mica 6.53 2.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A15</h3>
+        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-19" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-19" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A20 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="20" data-product-name="Samsung Galaxy A20" data-product-type="mica-cristal" data-product-price="0.48">
+    <img src="mica 6.5 5jpg.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A20</h3>
+        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-20" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-20" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A21s -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="21" data-product-name="Samsung Galaxy A21s" data-product-type="mica-cristal" data-product-price="0.48">
+    <img src="mica 6.5 5jpg.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A21s</h3>
+        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-21" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-21" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A24 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="22" data-product-name="Samsung Galaxy A24" data-product-type="mica-cristal" data-product-price="0.48">
+    <img src="mica 6.5 5jpg.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A24</h3>
+        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-22" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-22" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A30 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="23" data-product-name="Samsung Galaxy A30" data-product-type="mica-cristal" data-product-price="0.48">
+    <img src="mica 6.5 4.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A30</h3>
+        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-23" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-23" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A55 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="24" data-product-name="Samsung Galaxy A55" data-product-type="mica-cristal" data-product-price="0.48">
+    <img src="mica 6.5 4.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A55</h3>
+        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-24" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-24" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Xiaomi Redmi Note 8 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="25" data-product-name="Xiaomi Redmi Note 8" data-product-type="mica-cristal" data-product-price="0.48">
+    <img src="mica 6.5 3.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Xiaomi Redmi Note 8</h3>
+        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-25" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-25" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Xiaomi Redmi Note 13 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="26" data-product-name="Xiaomi Redmi Note 13" data-product-type="mica-cristal" data-product-price="0.48">
+    <img src="mica 6.5 4.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Xiaomi Redmi Note 13</h3>
+        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-26" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-26" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Tecno Spark Go 2024 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="27" data-product-name="Tecno Spark Go 2024" data-product-type="mica-cristal" data-product-price="0.48">
+    <img src="mica 6.53 2.jpg" alt="Mica Cristal" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Tecno Spark Go 2024</h3>
+        <p class="text-gray-600 mb-4 font-bold text-blue-600">0.48 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-27" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-27" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- NOTA: Faltan A16, A26, A35, A56 ya que no son modelos comunes. Puedes añadirlos si es necesario. -->
+
+                <!-- Producto 2: Mica Anti-espia -->
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="28" data-product-name="Xiaomi Redmi 13C" data-product-type="mica-espia" data-product-price="1.10">
+                    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Xiaomi Redmi 13C</h3>
+                        <p class="text-gray-600 mb-4 font-bold text-purple-600"> 1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+                        <div class="flex items-center mb-4">
+                            <label for="qty-28" class="mr-2 text-gray-700">Cantidad:</label>
+                            <input type="number" id="qty-2" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+                    </div>
+                </div>
+
+
+                <!-- iPhone 7 y 8+ -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="28" data-product-name="iPhone 7 y 8+" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">iPhone 7 y 8+</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-28" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-28" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A04 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="29" data-product-name="Samsung Galaxy A04" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A04</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-29" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-29" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A04e -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="30" data-product-name="Samsung Galaxy A04e" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A04e</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-30" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-30" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A04s -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="31" data-product-name="Samsung Galaxy A04s" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A04s</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-31" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-31" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A05 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="32" data-product-name="Samsung Galaxy A05" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A05</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-32" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-32" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A12 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="33" data-product-name="Samsung Galaxy A12" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A12</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-33" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-33" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A13 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="34" data-product-name="Samsung Galaxy A13" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A13</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-34" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-34" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A15 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="35" data-product-name="Samsung Galaxy A15" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A15</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-35" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-35" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A23 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="36" data-product-name="Samsung Galaxy A23" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A23</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-36" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-36" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A24 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="37" data-product-name="Samsung Galaxy A24" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A24</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-37" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-37" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A25 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="38" data-product-name="Samsung Galaxy A25" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A25</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-38" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-38" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A26 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="39" data-product-name="Samsung Galaxy A26" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A26</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-39" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-39" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Xiaomi Redmi A3 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="40" data-product-name="Xiaomi Redmi A3" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Xiaomi Redmi A3</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-40" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-40" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A33 5G -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="41" data-product-name="Samsung Galaxy A33 5G" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A33 5G</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-41" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-41" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A34 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="42" data-product-name="Samsung Galaxy A34" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A34</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-42" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-42" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A35 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="43" data-product-name="Samsung Galaxy A35" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A35</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-43" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-43" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A53 5G -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="44" data-product-name="Samsung Galaxy A53 5G" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A53 5G</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-44" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-44" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Samsung Galaxy A55 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="45" data-product-name="Samsung Galaxy A55" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Samsung Galaxy A55</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-45" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-45" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- Honor 200 LITE -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="46" data-product-name="Honor 200 LITE" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Honor 200 LITE</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-46" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-46" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- iPhone 11 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="47" data-product-name="iPhone 11" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">iPhone 11</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-47" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-47" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- iPhone 11 Pro Max -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="48" data-product-name="iPhone 11 Pro Max" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">iPhone 11 Pro Max</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-48" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-48" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- iPhone 12 Pro Max -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="49" data-product-name="iPhone 12 Pro Max" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">iPhone 12 Pro Max</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-49" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-49" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- iPhone 13 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="50" data-product-name="iPhone 13" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">iPhone 13</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-50" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-50" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- iPhone 13 Pro Max -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="51" data-product-name="iPhone 13 Pro Max" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">iPhone 13 Pro Max</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-51" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-51" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- iPhone 14 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="52" data-product-name="iPhone 14" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">iPhone 14</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-52" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-52" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- iPhone 14 Pro Max -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="53" data-product-name="iPhone 14 Pro Max" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">iPhone 14 Pro Max</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-53" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-53" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- iPhone 15 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="54" data-product-name="iPhone 15" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">iPhone 15</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-54" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-54" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- iPhone 15 Pro -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="55" data-product-name="iPhone 15 Pro" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">iPhone 15 Pro</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-55" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-55" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- iPhone 15 Pro Max -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="56" data-product-name="iPhone 15 Pro Max" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">iPhone 15 Pro Max</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-56" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-56" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- iPhone 16 -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="57" data-product-name="iPhone 16" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">iPhone 16</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-57" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-57" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- iPhone 16 Plus -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="58" data-product-name="iPhone 16 Plus" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">iPhone 16 Plus</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-58" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-58" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- iPhone 16 Pro -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="59" data-product-name="iPhone 16 Pro" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">iPhone 16 Pro</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-59" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-59" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+<!-- iPhone 16 Pro Max -->
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="60" data-product-name="iPhone 16 Pro Max" data-product-type="mica-espia" data-product-price="1.10">
+    <img src="mica 6.5 4.jpg" alt="Mica Anti-espia" class="w-full h-48 object-cover">
+    <div class="p-5">
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">iPhone 16 Pro Max</h3>
+        <p class="text-gray-600 mb-4 font-bold text-purple-600">1.10 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+        <div class="flex items-center mb-4">
+            <label for="qty-60" class="mr-2 text-gray-700">Cantidad:</label>
+            <input type="number" id="qty-60" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+    </div>
+</div>
+
+
+                <!-- Producto 3: Mica Tortuga -->
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" data-product-id="61" data-product-name="Mica de Cristal Templado (Tortuga)" data-product-type="mica-tortuga" data-product-price="0.55">
+                    <img src="agotado.png" alt="Mica Tortuga" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Mica de Cristal Templado (Tortuga)</h3>
+                        <p class="text-gray-600 mb-4 font-bold text-green-600"> 0.55 USD <span class="text-sm font-normal text-gray-500">(min. 25)</span></p>
+                        <div class="flex items-center mb-4">
+                            <label for="qty-61" class="mr-2 text-gray-700">Cantidad:</label>
+                            <input type="number" id="qty-3" value="25" min="25" class="w-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:bg-blue-700 transition duration-300 shadow-md">Agregar</button>
+                    </div>
+                </div>
+                
+                
+
+                <!-- Puedes agregar más productos aquí siguiendo la misma estructura -->
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 DNF Accesorios. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-modal-content">
+            <span class="close-button">&times;</span>
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Tu Carrito de Compras</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="py-3 px-4 font-semibold">Producto</th>
+                            <th class="py-3 px-4 font-semibold">Cantidad</th>
+                            <th class="py-3 px-4 font-semibold">Precio Unit.</th>
+                            <th class="py-3 px-4 font-semibold">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-items-body">
+                        <!-- Los items del carrito se insertarán aquí -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-6 text-right">
+                <p class="text-xl font-bold text-gray-800">Total: <span id="cart-total" class="text-blue-600">0.00 USD</span></p>
+            </div>
+            <div class="mt-8 flex justify-end">
+                <button id="request-whatsapp-button" class="bg-green-500 text-white px-8 py-3 rounded-full font-bold hover:bg-green-600 transition duration-300 flex items-center space-x-2">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Solicitar por WhatsApp</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- ESTADO DE LA APLICACIÓN ---
+        let cart = []; // Array para guardar los productos del carrito
+
+        // --- SELECTORES DEL DOM ---
+        const cartIcon = document.getElementById('cart-icon');
+        const cartCountSpan = document.getElementById('cart-count');
+        const cartModal = document.getElementById('cart-modal');
+        const closeModalBtn = document.querySelector('.close-button');
+        const cartItemsBody = document.getElementById('cart-items-body');
+        const cartTotalSpan = document.getElementById('cart-total');
+        const requestWhatsappButton = document.getElementById('request-whatsapp-button');
+        const searchInput = document.getElementById('search-input');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productsGrid = document.getElementById('products-grid');
+
+        // --- FUNCIONES ---
+
+        /**
+         * Agrega un producto al carrito o actualiza su cantidad si ya existe.
+         */
+        const addProductToCart = (product, quantity) => {
+            if (quantity < 25) {
+                // Usamos un modal simple en lugar de alert()
+                showTempMessage('La cantidad mínima es 25 unidades.');
+                return;
+            }
+
+            const existingItem = cart.find(item => item.id === product.id);
+
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ ...product, quantity });
+            }
+            
+            showTempMessage(`${product.name} agregado al carrito!`);
+            updateCartDisplay();
+        };
+
+        /**
+         * Actualiza la vista del carrito (modal y contador del ícono).
+         */
+        const updateCartDisplay = () => {
+            cartItemsBody.innerHTML = ''; // Limpiar la tabla
+            let totalUSD = 0;
+            let totalCUP = 0;
+
+            if (cart.length === 0) {
+                cartItemsBody.innerHTML = '<tr><td colspan="4" class="py-4 text-center text-gray-500">El carrito está vacío.</td></tr>';
+            } else {
+                cart.forEach(item => {
+                    const subtotal = item.price * item.quantity;
+                    const currency = item.name.toLowerCase().includes('espia') || item.name.toLowerCase().includes('tortuga') ? 'USD' : 'USD';
+                    
+                    if (currency === 'USD') {
+                        totalUSD += subtotal;
+                    } else {
+                        totalCUP += subtotal;
+                    }
+
+                    const row = `
+                        <tr class="border-b">
+                            <td class="py-3 px-4 text-gray-800">${item.name}</td>
+                            <td class="py-3 px-4 text-gray-800">${item.quantity}</td>
+                            <td class="py-3 px-4 text-gray-800">${item.price.toFixed(2)} ${currency}</td>
+                            <td class="py-3 px-4 text-gray-800 font-semibold">${subtotal.toFixed(2)} ${currency}</td>
+                        </tr>`;
+                    cartItemsBody.innerHTML += row;
+                });
+            }
+
+            // Actualizar total
+            let totalText = [];
+            if (totalUSD > 0) totalText.push(`${totalUSD.toFixed(2)} USD`);
+            if (totalCUP > 0) totalText.push(`${totalCUP.toFixed(2)} USD`);
+            cartTotalSpan.textContent = totalText.join(' + ') || '0.00';
+
+            // Actualizar contador del ícono
+            cartCountSpan.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+        };
+
+        /**
+         * Muestra un mensaje temporal en la pantalla.
+         */
+        const showTempMessage = (message) => {
+            const messageDiv = document.createElement('div');
+            messageDiv.textContent = message;
+            messageDiv.className = 'fixed bottom-5 right-5 bg-gray-800 text-white py-3 px-5 rounded-lg shadow-lg z-[150]';
+            document.body.appendChild(messageDiv);
+            setTimeout(() => {
+                messageDiv.remove();
+            }, 3000);
+        };
+        
+        /**
+         * Filtra los productos visibles según el término de búsqueda y el filtro activo.
+         */
+        const filterProducts = () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            const activeFilter = document.querySelector('.filter-btn.bg-gray-800')?.dataset.filter || 'all';
+            
+            document.querySelectorAll('.product-card').forEach(card => {
+                const productName = card.dataset.productName.toLowerCase();
+                const productType = card.dataset.productType;
+
+                const matchesSearch = productName.includes(searchTerm);
+                const matchesFilter = activeFilter === 'all' || productType === activeFilter;
+
+                if (matchesSearch && matchesFilter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        };
+
+
+        // --- EVENT LISTENERS ---
+
+        // Listener para los botones "Agregar" (delegación de eventos)
+        productsGrid.addEventListener('click', (event) => {
+            if (event.target.classList.contains('add-to-cart-btn')) {
+                const productCard = event.target.closest('.product-card');
+                if (!productCard) return;
+
+                const product = {
+                    id: productCard.dataset.productId,
+                    name: productCard.dataset.productName,
+                    // ✅ LA CORRECCIÓN CLAVE: Usar parseFloat para leer decimales
+                    price: parseFloat(productCard.dataset.productPrice)
+                };
+                
+                const quantityInput = productCard.querySelector('input[type="number"]');
+                const quantity = parseInt(quantityInput.value, 10);
+
+                addProductToCart(product, quantity);
+            }
+        });
+
+        // Listeners para el modal del carrito
+        cartIcon.addEventListener('click', () => cartModal.style.display = 'flex');
+        closeModalBtn.addEventListener('click', () => cartModal.style.display = 'none');
+        window.addEventListener('click', (event) => {
+            if (event.target === cartModal) {
+                cartModal.style.display = 'none';
+            }
+        });
+
+        // Listener para el botón de WhatsApp
+        requestWhatsappButton.addEventListener('click', () => {
+            if (cart.length === 0) {
+                showTempMessage('El carrito está vacío.');
+                return;
+            }
+
+            const phoneNumber = '59752791'; // Reemplaza con tu número
+            let message = "¡Hola! Me gustaría solicitar los siguientes productos:\n\n";
+            let totalUSD = 0;
+            let totalCUP = 0;
+
+            cart.forEach(item => {
+                const subtotal = item.price * item.quantity;
+                const currency = item.name.toLowerCase().includes('espia') || item.name.toLowerCase().includes('tortuga') ? 'USD' : 'USD';
+                
+                if (currency === 'USD') totalUSD += subtotal;
+                else totalCUP += subtotal;
+                
+                message += `- ${item.name} (Cantidad: ${item.quantity}, Subtotal: ${subtotal.toFixed(2)} ${currency})\n`;
+            });
+
+            let totalText = [];
+            if (totalUSD > 0) totalText.push(`${totalUSD.toFixed(2)} USD`);
+            if (totalCUP > 0) totalText.push(`${totalCUP.toFixed(2)} USD`);
+
+            message += `\n*Precio Total: ${totalText.join(' + ')}*\n\n`;
+            message += "Por favor, confírmame la disponibilidad. ¡Gracias!";
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+        });
+        
+        // Listener para la barra de búsqueda
+        searchInput.addEventListener('input', filterProducts);
+        
+        // Listeners para los botones de filtro
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Cambiar estilo del botón activo
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('bg-gray-800');
+                    btn.classList.add(btn.dataset.originalBg || 'bg-gray-500');
+                });
+                button.dataset.originalBg = Array.from(button.classList).find(c => c.startsWith('bg-'));
+                button.classList.remove(button.dataset.originalBg);
+                button.classList.add('bg-gray-800');
+                
+                filterProducts();
+            });
+        });
+
+        // --- INICIALIZACIÓN ---
+        updateCartDisplay(); // Llamada inicial para establecer el estado del carrito
+    });
+    </script>
+</body>
+</html>
